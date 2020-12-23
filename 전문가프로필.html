@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/notosanskr.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/i.css">
+    <style>
+        /*프로필 박스 전체 입니다*/
+        .profileBox{
+            /*박스를 부모 기준으로 고정시킵니다*/
+            position: relative;
+            /*박스의 크기를 지정된 설정값으로 세팅합니다*/
+            width: 1000px;
+            height: 490px;
+            /*브라우저 크기에 따라 중앙정렬이 되도록 합니다*/
+
+            margin: auto;
+            margin-top: 50px;
+            text-align: center;
+            /*테두리 설정입니다*/
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .profile_setting{
+            position: absolute;
+            float: right;
+            top: 25px;
+            right: 380px;
+            background-color: #ff6f7f;
+            width: 150px;
+            height: 80px;
+        }
+        /*프로필 설정 버튼입니다*/
+        .profile_setting_mark{
+            position: absolute;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        .popup_setting{
+            display: inline-block;
+        }
+        /*프로필과 경력사항이 포함된 필드입니다*/
+        .profile{
+            float: left;
+            margin: 20px 0 40px 30px;
+            width: 600px;
+            height: 450px;
+            background-color: #bee1fd;
+            border-radius: 10px;
+        }
+        /*뱃지 필드 입니다*/
+        .badgeBox{
+            float: right;
+            margin: 20px 30px 0 10px;
+            width: 320px;
+            height: 450px;
+            border: 1px solid #b7deff;
+            border-radius: 10px;
+        }
+        /*프로필 머릿말 필드입니다*/
+        .profile_prefaceBox{
+            position: relative;
+            width: 600px;
+            height: 50px;
+            /*background-color: #1565C0;*/
+        }
+        /*머릿말 영역입니다*/
+        .preface{
+            position: relative;
+            width: 350px;
+            height: 50px;
+            top: 10px;
+            display: inline-block;
+            background-color: #2699F7;
+            border-radius: 10px;
+        }
+        /*머릿말 영역 꼬리입니다*/
+        .preface::before{
+            content: "";
+            position: absolute;
+            top: 50px;
+            left: 80px;
+            border-top: 15px solid #2699F7;
+            border-left: 10px solid transparent;
+        }
+        /*머릿말 영역 꼬리입니다*/
+        .preface::after{
+            content: "";
+            position: absolute;
+            top: 50px;
+            left: 90px;
+            border-top: 15px solid #2699F7;
+            border-right: 10px solid transparent;
+        }
+        /*머릿말 영역 글자를 담는 영역입니다*/
+        .preface h2{
+            line-height: 50px;
+        }
+        /*머릿말 영역 글자입니다*/
+        .preface a{
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+        /*머릿말 영역 글자 호버입니다*/
+        .preface a:hover{
+            font-weight: bold;
+        }
+        /*머릿말 영역 글자 호버시 아이콘 표시입니다*/
+        .preface a:hover:after{
+            content :"\2710";
+            position: absolute;
+            font-size: 25px;
+            transform: rotate(180deg);
+        }
+        /*사진과 등급 이름이 나오는 영역입니다*/
+        .profile_detail{
+            float: left;
+            width: 300px;
+        }
+        /*커리어 영역입니다*/
+        .profile_career{
+            float: left;
+            width: 250px;
+            height: 330px;
+            /*background-color: #858585;*/
+        }
+        /*프로필 이미지 영역입니다*/
+        .img_profile{
+            float: left;
+            margin-top: 30px;
+            margin-left: 35px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+        /*등급과 상세정보가 표시되는 영역입니다*/
+        .profile_grade_info{
+            float: left;
+            top: 30px;
+            width: 100%;
+        }
+        /*등급이 표시되는 영역입니다*/
+        .grade{
+            float: left;
+            margin-left: 40px;
+            width: 100px;
+            height: 100px;
+            background-color: #ffe6e6;
+        }
+        /*등급 이미지입니다*/
+        .grade_img{
+            position: relative;
+            width: 100px;
+        }
+        /*상세정보 영역입니다*/
+        .doctor_info{
+            margin-top: 20px;
+            margin-left: 10px;
+            width: 150px;
+            float: left;
+            text-align: left;
+            /*background-color: #ff6f7f;*/
+        }
+        /*상세 이름영역*/
+        .doctor_info .profile_name{
+            margin-bottom: 5px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        /*상세 이름 직업 영역*/
+        .doctor_info .job{
+            font-size: 13px;
+        }
+        /*상세 기간계산 영역*/
+        .doctor_info .period_cal{
+            margin-bottom: 5px;
+        }
+        /*상세 전화번호 영역*/
+        .doctor_info .phone_num a:hover{
+            font-weight: bold;
+            /*background-color: #bbbbbb;*/
+        }
+        .doctor_info a{
+            text-decoration: none;
+            color: #000;
+            /*background-color: cornsilk;*/
+        }
+        /*상세 전화번호 영역 호버시 아이콘 표시입니다*/
+        .doctor_info a:hover:after{
+            content :"\2710";
+            position: absolute;
+            font-size: 20px;
+            transform: rotate(180deg);
+        }
+        /*경력사항 제목입니다*/
+        .career_title{
+            float: left;
+            height: 30px;
+            margin-top: 15px;
+            line-height: 30px;
+            text-align: left;
+            /*background-color: #5e5e5e;*/
+            width: 100px;
+            font-weight: 700;
+        }
+        /*경력사항 리스트*/
+        .career_list {
+            float: left;
+            height: 330px;
+            text-align: left;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        /*경력사항 스크롤바 UI*/
+        .career_list::-webkit-scrollbar{
+            width: 8px;
+            height: 330px;
+        }
+        .career_list::-webkit-scrollbar-track {
+            border-radius: 8px;
+            background-color: #e0edff;
+        }
+        .career_list::-webkit-scrollbar-thumb {
+            border-radius: 8px;
+            background-color: #6db6f3;
+        }
+        /*경력사항 리스트 호버시 마이너스 표시*/
+        .career_list .career_detail:hover:before{
+            content :"\2212";
+            float: right;
+            right: 8px;
+            width: 20px;
+            height: 20px;
+            line-height: 15px;
+            text-align: center;
+            font-size: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            background-color: #ff6f7f;
+            animation: delete_btn_shaking .8s linear infinite;
+        }
+        /*마이너스 표시 딸랑이*/
+        @keyframes delete_btn_shaking {
+            0%{transform: rotate(0deg)}
+            8%{transform: rotate(-15deg)}
+            16%{transform: rotate(15deg)}
+            24%{transform: rotate(-10deg)}
+            32%{transform: rotate(10deg)}
+            40%{transform: rotate(-5deg)}
+            48%{transform: rotate(5deg)}
+            56%{transform: rotate(0deg)}
+        }
+        /*커리어 리스트 플러스 영역*/
+        .career_list_plus{
+            float: left;
+            margin-top: 15px;
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 5px;
+            background-color: #96cbff;
+            font-size: 15px;
+        }
+        /*커리어 플러스버튼 호버시*/
+        .career_list_plus:hover{
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #2699F7;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(100, 181, 246, 0.12);
+        }
+        /*경력사항 인풋 영역*/
+        .career_input_area{
+            text-align: left;
+            margin-top: 45px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(100, 181, 246, 0.12);
+            display: none;
+        }
+        /*경력사항 인풋영역 생성*/
+        .career_input_area.on {
+            display: block;
+        }
+        /*인풋박스 설정*/
+        .input{
+            height: 22px;
+            margin-bottom: 2px;
+            margin-top: 2px;
+            margin-left: 5px;
+        }
+        .input_start_year{
+            width: 80px;
+        }
+        .input_end_year{
+            width: 80px;
+        }
+        .input_place{
+            width: 230px;
+        }
+        /*뱃지 제목영역*/
+        .badge_total_count h3{
+            height: 30px;
+            margin: 25px 15px;
+            line-height: 30px;
+            text-align: left;
+            /*background-color: #5e5e5e;*/
+            width: 100px;
+            font-weight: 700;
+        }
+        /*뱃지 전체보기 버튼입니다*/
+        .popup_badge_total_btn
+        {
+            position: absolute;
+            right:50px;
+            top:50px;
+            border-radius: 10px;
+            border: none;
+            /*background-color: #ff6f7f;*/
+        }
+        /*뱃지 팝업*/
+        .popup_badge_total_bg.on{
+            display: block;
+        }
+        .badge_list_title{
+            position: absolute;
+            margin: 20px;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        .badge_list_subtitle{
+            margin: 5px 0;
+            font-weight: 300;
+            font-size: 13px;
+        }
+        .popup_badge_total_bg{
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            background-color: rgba(0,0,0,.5);
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+        .popup_badge_total{
+            position: relative;
+            margin: auto;
+            top: 50%;
+            margin-top: -325px;
+            width: 560px;
+            height: 650px;
+            background-color: #b7deff;
+        }
+        .badge_total_content{
+            position: relative;
+            margin: auto;
+            top: 80px;
+            width: 520px;
+            height: 550px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+        .badge_detail{
+            float: left;
+            /*top: 25px;*/
+            /*background-color: #ff6f7f;*/
+            width: 150px;
+            height: 190px;
+            margin: 10px;
+            text-align: center;
+
+        }
+        .img_popupBadge{
+            height: 150px;
+            /*margin: 10px 5px;*/
+            /*background-color: #b7deff;*/
+        }
+        .badge_description{
+            font-size: 13px;
+        }
+        /*뱃지 팝업 상 스크롤바 UI*/
+        .badge_total_content::-webkit-scrollbar{
+            width: 8px;
+            height: 330px;
+        }
+        .badge_total_content::-webkit-scrollbar-track {
+            border-radius: 8px;
+            background-color: #e0edff;
+        }
+        .badge_total_content::-webkit-scrollbar-thumb {
+            border-radius: 8px;
+            background-color: #6db6f3;
+        }
+        /*뱃지 리스트가 표시될 영역*/
+        .badge_list{
+            width: 300px;
+            margin: auto;
+            margin-top: 40px;
+            background-color: #b7deff;
+
+        }
+        /*뱃지 이미지 나열*/
+        .badge_img{
+            float: left;
+            margin: 10px 5px;
+            width: 90px;
+            height: 90px;
+            /*background-color: #5ab6ff;*/
+        }
+        /*커리어 리스트의 한칸 영역입니다.*/
+        .career_detailBox{
+            position: relative;
+            width: 250px;
+            margin-bottom: 10px;
+        }
+        /*커리어 리스트의 마크 표시 영역입니다.*/
+        .career_detail_mark{
+            position: relative;
+            width: 40px;
+            height: 50px;
+            line-height: 50px;
+            color: #69baff;
+        }
+        /*커리어 리스트 첫번째 자식의 마크에 애니메이션 효과를 줍니다*/
+        .career_list .circle{
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 12px;
+            animation: bright 1.2s ease infinite ;
+            color: #2699F7;
+        }
+        .wave{
+            position: absolute;
+            width: 100%;
+            line-height: 50px;
+            text-align: center;
+            animation: wave 1.2s ease infinite ;
+        }
+        .wave_second{
+            position: absolute;
+            width: 100%;
+            line-height: 50px;
+            text-align: center;
+            animation: wave_second 1.2s ease infinite ;
+        }
+        @keyframes bright {
+            0%{opacity: 0.3}
+            20%{opacity: 1}
+            100%{opacity: 0}
+        }
+        @keyframes wave {
+            0%{opacity: 1}
+            100%{opacity: 0; transform: scale(2.2)}
+        }
+        @keyframes wave_second {
+            10%{opacity: 0; transform: scale(0.3)}
+            25%{opacity: .8; transform: scale(.9)}
+            100%{opacity: 0; transform: scale(1.8)}
+        }
+        /*커리어 리스트의 두번째 자식부터는 마크의 애니메이션 효과를 없앱니다.*/
+        .career_list ul li:nth-of-type(n+2) .circle{
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            animation: none;
+            color: #ffffff;
+        }
+        .career_list ul li:nth-of-type(n+2) .wave,  .career_list ul li:nth-of-type(n+2) .wave_second{
+            display: none;
+        }
+        /*커리어 리스트의 상세 표시 구역입니다.*/
+        .career_detail{
+            position: absolute;
+            top: -1px;
+            margin-top: 1px;
+            padding-left: 4px;
+            left: 40px;
+            width: 200px;
+            line-height: 25px;
+            border-radius: 10px;
+        }
+        .career_detail:hover{
+            cursor: pointer;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+        .period{
+            width: 200px;
+            height: 25px;
+        }
+        .place{
+            width: 200px;
+            height: 25px;
+            font-size: 13px;
+        }
+        /*콘텐트 네비게이션 박스입니다*/
+        .nav_contentBox{
+            position: relative;
+            clear: both;
+            height: 30px;
+        }
+        .masterProfileTapHr{
+            position: relative;
+            top: -3px;
+        }
+        .masterProfileTap li {
+            float: left;
+            position: relative;
+            left: 34px;
+            /*background-color: #ff6f7f;*/
+            cursor: pointer;
+        }
+        .masterProfileTap li.on {
+            /*border-radius: 10px;*/
+            z-index: 1;
+            border-bottom: 4px solid #2699F7 ;
+            /*background-color: darksalmon;*/
+        }
+        .masterProfileTap li a{
+            width: 100px;
+            height: 25px;
+            display: block;
+            margin:0 2px 0 2px;
+            text-align: center;
+            line-height: 25px;
+            color: #424242;
+            text-decoration: none;
+        }
+        /*탭을 눌렀을때 컨텐트 내용이 들어가는 곳입니다*/
+        .masterProfile_contents {
+            border-top: none;
+            width: 330px;
+            height: 821px;
+        }
+        .masterProfile_contents .tab {
+            position: absolute;
+            display: none;
+        }
+        .masterProfile_contents .tab.on {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="header">
+        <div class="aux">
+            <div id="logo">
+                <h1><a href=""><img src="img/img_logo.png"></a><p class="screen_out">반하디</p></h1>
+            </div><!--  //#logo  -->
+            <div id="gnb">
+                <ul>
+                    <li><a href="">전문가상담</a></li>
+                    <li><a href="">병원예약</a></li>
+                    <li><a href="">마이펫</a></li>
+                    <li><a href="">로그인</a></li>
+                </ul>
+            </div><!--  //#gnb  -->
+        </div><!--  //.aux   -->
+    </div><!--  //#header  -->
+    <div id="content">
+        <div class="popup_badge_total_bg">
+            <div class="popup_badge_total">
+                <div class="badge_list_title">뱃지 목록
+                    <div class="badge_list_subtitle">뱃지 전체 목록 입니다. 뱃지를 획득하여 등급을 높여보세요!</div>
+                </div>
+                <div class="badge_total_content">
+                    <ul>
+                        <li>
+                            <div class="badge_detail">
+                                <img class="img_popupBadge" src="img/5연속%20출석.png">
+                                <span class="badge_description">5일 연속 출석했어요</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="badge_detail">
+                                <img class="img_popupBadge" src="img/병원예약30.png">
+                                <span class="badge_description">병원예약 30번을 해보세요</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="badge_detail">
+                                <img class="img_popupBadge" src="img/병원리뷰%2010개%20이상.png">
+                                <span class="badge_description">병원 리뷰를 10개 이상 달아보세요</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="badge_detail">
+                                <img class="img_popupBadge" src="img/답변15개등록.png">
+                                <span class="badge_description">답변 15개를 등록하세요</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="badge_detail">
+                                <img class="img_popupBadge" src="img/답변5개%20등록.png">
+                                <span class="badge_description">답변 5개를 등록하세요</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="badge_detail">
+                                <img class="img_popupBadge" src="img/총%2020번%20출석.png">
+                                <span class="badge_description">20번 이상 출석 해보세요</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="badge_detail">
+                                <img class="img_popupBadge" src="img/채택%205개.png">
+                                <span class="badge_description">답변 채택을 5개 받아보세요</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="badge_detail">
+                                <img class="img_popupBadge" src="img/평점%204.5점이상%20(1).png">
+                                <span class="badge_description">병원의 평점이 4.5점이 되어야 해요</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="badge_detail">
+                                <img class="img_popupBadge" src="img/채택10개%20(1).png">
+                                <span class="badge_description">상담답변 채택을 10개 받아보세요</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="badge_detail">
+                                <img class="img_popupBadge" src="img/g병원%20평점%205점.png">
+                                <span class="badge_description">병원의 평점이 5점이 되어야 해요!</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="profileBox">
+            <div class="profile">
+                <div class="profile_prefaceBox">
+                    <div class="preface">
+                        <h2><a href="javascript:" class="rename_preface">여기를 눌러 한 줄 소개를 수정하세요.</a></h2>
+                    </div>
+                </div><!--  profile_top end  -->
+                <div class="profile_detail">
+                    <img class="img_profile" src="img/doctor.png">
+                    <div class="profile_grade_info">
+                        <div class="grade">
+                            <img class="grade_img" src="img/goldmedal.png">
+                        </div>
+                        <div class="doctor_info">
+                            <ul>
+                                <li class="profile_name">김준호 <span class="job">수의사</span></li>
+                                <li class="period_cal">경력 14년</li>
+                                <li class="phone_num"><a href="jsvascript:">010-2356-2378</a></li>
+                            </ul>
+                        </div>
+                    </div><!--  profile_left_bottom end  -->
+                </div><!--  profile_left end  -->
+                <div class="profile_career">
+                    <div class="career_title"><h3>경력사항</h3></div>
+                    <div class="career_list_plus">추가</div>
+                    <div class="career_input_area">
+                        <input class="input input_start_year" placeholder="시작년도"> - <input class="input input_end_year" placeholder="종료년도">
+                        <input class="input input_place" placeholder="근무지 또는 직책">
+                    </div>
+                    <div class="career_list">
+                        <ul>
+                        </ul>
+                    </div>
+                </div><!--  profile_right end  -->
+            </div><!--  profile end  -->
+            <div class="profile_setting">
+                <div class="profile_setting_mark">&vellip;</div>
+                <div class="popup_setting">
+                    <span><a href="">비밀번호 수정</a></span>
+                    <span><a href="">회원탈퇴</a></span>
+                </div>
+            </div>
+            <div class="badgeBox">
+                <div class="badge_total_count"><h3>획득 뱃지 7개</h3></div>
+                <div class="btn_badge_total"><button class="popup_badge_total_btn">전체보기</button></div>
+                <div class="badge_list">
+                    <ul>
+                        <li>
+                                <img class="badge_img" src="img/5연속%20출석.png">
+                        </li>
+                        <li>
+                                <img class="badge_img" src="img/병원예약30.png">
+                        </li>
+                        <li>
+                                <img class="badge_img" src="img/병원리뷰%2010개%20이상.png">
+                        </li>
+                        <li>
+                                <img class="badge_img" src="img/답변15개등록.png">
+                        </li>
+                        <li>
+                                <img class="badge_img" src="img/답변5개%20등록.png">
+                        </li>
+                        <li>
+                                <img class="badge_img" src="img/총%2020번%20출석.png">
+                        </li>
+                        <li>
+                                <img class="badge_img" src="img/채택%205개.png">
+                        </li>
+                    </ul>
+                </div>
+            </div><!--  badge end  -->
+        </div><!-- box_profile end -->
+        <div class="nav_contentBox">
+            <ul id="nav_content" class="masterProfileTap">
+                <li class="on">
+                    <a href="" title="답변">답변(12)</a>
+                </li>
+                <li class="">
+                    <a href="" title="댓글">댓글(5)</a>
+                </li>
+                <li class="">
+                    <a href="" title="등급">등급</a>
+                </li>
+            </ul>
+            <hr class="masterProfileTapHr" width="1029px">
+        </div>
+        <div class="masterProfile_contents">
+            <div class="tab on">
+                1번 탭 내용
+            </div>
+            <div class="tab">
+                2번 탭 내용!!!
+            </div>
+            <div class="tab">
+                3번 탭 내용!!!!!!!
+            </div>
+        </div><!--//contents-->
+    </div><!--  //#content  -->
+    <div id="footer">
+        <div class="aux">
+            <div id="footer_logo">
+                <img src="img/img_footerlogo.png">
+            </div><!--  //#footer_logo -->
+            <div id="footer_info">
+                <ul>
+                    <li><a href="">반하디 소개</a><a href="">FAQ</a><a href="">이용약관</a><a href="">위치정보 이용약관</a><a href="">개인정보 수집 및 이용</a></li>
+                    <li>사업자 등록번호 : 123-45-67890</li>
+                    <li>&copy;2020 COCOProject. All rights reserved.</li>
+                </ul>
+            </div><!--  //#footer_info -->
+            <div id="footer_sns">
+                <ul>
+                    <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                    <li><a href=""><i class="fab fa-google"></i></a></li>
+                </ul>
+            </div><!--  //#footer_sns -->
+        </div><!--  //.aux -->
+    </div><!--  //#footer -->
+</div>
+
+
+<!--이렇게 쓰면 자바스크립트로 인식을 안한다. 템플릿 만들기-->
+<script type="text/template" id="profileCareerTmpl">
+        <li class="career_detailBox">
+            <div class="career_detail_mark">
+                <div class="circle"><i class="fas fa-circle"></i></div>
+                <div class="wave"><i class="far fa-circle"></i></div>
+                <div class="wave_second"><i class="far fa-circle"></i></div>
+            </div>
+            <div class="career_detail">
+                <div class="period">2020 - 현재</div>
+                <div class="place">서울동물병원 진료수의사</div>
+            </div>
+        </li>
+</script>
+
+<script src="js/jquery.js"></script>
+<script src="js/underscore-min.js"></script>
+<script>
+
+
+    const $badgePopup = $(".popup_badge_total_btn");
+    const $popupArea = $(".popup_badge_total_bg");
+
+    const profileCareerTmpl = _.template($("#profileCareerTmpl").html());
+    const $careerList = $(".career_list ul");
+
+    // 뱃지 전체보기 버튼을 클릭했을때
+    $badgePopup.click(function () {
+        $(".popup_badge_total_bg").toggleClass("on");
+        $("html").css({
+            overflow:"hidden",
+        });
+        $("#content, #header").css({
+            paddingRight:"17px"
+        });
+        $(".aux").css({
+            left:"-8px"
+        })
+    });//#career_list_plus click()
+    $popupArea.click(function (){
+        $(".popup_badge_total_bg").toggleClass("on");
+    })
+
+
+    // 컨텐트 탭을 눌렀을 때
+    $(".masterProfileTap li").click(function (e) {
+
+        //1) a요소의 링크이동 막기
+        e.preventDefault();
+
+        //2) 기존의 on클래스를 제거
+        $(".on").removeClass("on");
+
+        //3) 우리가 클릭한 그 li요소에 on클래스를 더함
+        $(this).addClass("on");
+
+        //4) 우리가 클릭한 그 요소의 index를 얻어옴
+        const idx = $(this).index();
+
+        //5) .tab요소들 중 해당 index에 있는 요소에
+        //   on클래스를 더함
+        $(".tab").eq(idx)
+            .addClass("on");
+
+    });//.shop_tab li click() end
+
+
+    // 추가버튼을 클릭했을때
+    $(".career_list_plus").click(function () {
+        $(".career_input_area").toggleClass("on");
+        if($(".career_input_area").hasClass("on")){
+            $(".career_list_plus").text("저장");
+            $(".career_list").css({height:"266px",});
+        }else{
+            $(".career_list_plus").text("추가");
+            $(".career_list").css({height:"330px",});
+            $careerList.append(profileCareerTmpl());
+        }
+    });//#career_list_plus click()
+
+
+
+
+    //새로 생성된 요소는 3개짜리를 쓴다
+    // 세번째가 새로 생성된 애를 넣는 부분
+    $(".career_list").on("click",".career_detail",function () {
+        $(this).parent().remove();
+    });//#career_list_plus click()
+
+    $("input[type=radio]").on("change",function (){
+        get
+    })
+
+
+
+
+
+
+    // // 리스트생성
+    // function createCareerList() {
+    //     const value = $(".input_year").val();
+    //
+    //     $(".input_start_year").val("").focus();
+    //
+    //     // 언더스코어 사용하기
+    //
+    //     $("<input class='input input_start_year' placeholder='시작년도'> - <input class='input input_end_year' placeholder='종료년도'>"+
+    //         "<button class='career_input_cancel'><i class=\"far fa-window-close\"></i></button>"+
+    //         "<input class='input input_place' placeholder='근무지 또는 직책'>"+
+    //         "<button class='career_input_btn'>입력</button>")
+    //         .appendTo(".career_input_area");
+    //
+    //     $("<div class='career_input_area'>:last").text(value).css({
+    //         position: "relative",
+    //     }).after("#career_list");
+    // }//createAnimal() end
+
+    // $("<div class='career_list_plus'>+</div>")
+    //     .css({
+    //         textAlign: "center",
+    //     })
+    //     .appendTo(".career_input_area");
+
+
+    // const $li = $("<li>").text(value);
+    // $("#animalList").append($li);
+    //$("#animalList").prepend($("<li>").text(value));
+
+    // $("<li>").text(value)
+    //          .prependTo("#animalList");
+
+    //:last는 jquery전용선택자(css에서 사용불가)
+    //$("li:last").after($("<li>").text(value));
+
+    //$("<li>").text(value).insertAfter("li:last");
+
+    //$("li:first").before($("<li>").text(value));
+
+    // $("<li>").text(value)
+    //          .insertBefore("li:first");
+
+
+    // $(".input_year").keyup(function (e) {
+    //     if(e.keyCode==13) {
+    //         //엔터칠때만 호출
+    //         createCareerList();
+    //     }//if end
+    // });//#name keyup() end
+
+    /*
+        요소를 DOM에 추가하는 메서드
+        - 부모.append(자식) : 자식을
+        부모의 마지막 자식으로 추가
+        - 자식.appendTo(부모) : 자식을
+        부모의 마지막 자식으로 추가
+        - 부모.prepend(자식) : 자식을
+        부모의 첫번째 자식으로 추가
+        - 자식.prependTo(부모) : 자식을
+        부모의 첫번째 자식으로 추가
+
+        - 기존형제.after(새로추가되는요소)
+        - 새로추가되는요소.insertAfter(기존형제)
+
+        - 기존형제.before(새로추가되는요소)
+        - 새로추가되는요소.insertBefore(기존형제)
+     */
+
+
+
+
+</script>
+
+</body>
+</html>
