@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+        #formBox{
+            position: relative;
+            width: 600px;
+            height: auto;
+            margin: auto;
+            margin-top: 100px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+        #background{
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-image: url("img/logo.png");
+            background-size: 165px 195px;
+            background-repeat: no-repeat;
+            background-position: right top;
+            animation: backgroundOpacity 2s ease;
+            opacity: 0.5;
+        }
+        @keyframes backgroundOpacity {
+            0%{opacity: 0}
+            100%{opacity: 0.5}
+        }
+        .titleArea{
+            margin: 50px 0 0 50px;
+            width: 460px;
+            height: 100px;
+        }
+        .title{
+            position: relative;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .subtitle{
+            position: relative;
+            top: 10px;
+            font-size: 14px;
+        }
+        .tagArea{
+            position: relative;
+            width: 130px;
+            height: 60px;
+            left: 70px;
+        }
+        .atSign {
+            position: relative;
+            left: 177px;
+            top: 2px;
+        }
+        .inputArea{
+            position: absolute;
+            top:-7px;
+            left: 120px;
+            width: 230px;
+            height: 30px;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+        #btn_signUp{
+            position: relative;
+            left: 50%;
+            width: 150px;
+            height: 30px;
+            margin-left: -75px;
+            border: 1px solid #2699F7;
+            background-color: #fff;
+            color: #2699F7;
+            margin-bottom: 25px;
+        }
+        #btn_signUp:hover{
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+        .emailId{
+            width: 100px;
+        }
+        .email{
+            left: 250px;
+            width: 100px;
+        }
+        .selectedEmail{
+            left: 360px;
+            width: 100px;
+            height: 34px;
+        }
+        .name{
+            width: 100px;
+        }
+        .phoneNum{
+            left: 210px;
+            width: 140px;
+        }
+        .carrier{
+            width: 85px;
+            height: 34px;
+        }
+        .certification{
+            left: 360px;
+            width: 100px;
+            height: 34px;
+            color: #888;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="header">
+
+    </div>
+    <div id="content">
+
+        <form id="formBox" action="" name="" method="get">
+            <div id="background"></div>
+            <fieldset>
+                    <div class="titleArea">
+                        <h1 class="title">가입정보입력</h1>
+                        <h2 class="subtitle">반하디의 서비스를 이용해 보세요!</h2>
+                    </div>
+                    <div class="tagArea">
+                        <label>이메일 <input type="email" name="emailId" class="inputArea emailId"></label>
+                        <span class="atSign">@</span>
+                        <input type="email" name="email" class="inputArea email">
+                        <select name="selectedEmail" class="inputArea selectedEmail">
+                            <option>직접입력</option>
+                            <option>naver.com</option>
+                            <option>gmail.com</option>
+                        </select>
+                        <p id="agreeMsg" class="agreeMsg">이메일 형식이 아닙니다.</p>
+                    </div>
+                    <div class="tagArea">
+                        <label>비밀번호 <input type="password" name="password" class="inputArea" placeholder="영문/숫자/특수문자 조합 8~15자리"></label>
+                    </div>
+                    <div class="tagArea">
+                        <label>비밀번호 확인 <input type="password" name="passwordConfirm" class="inputArea" placeholder="비밀번호 확인"></label>
+                    </div>
+                    <div class="tagArea">
+                        <label>이름 <input type="text" name="name" class="inputArea name" placeholder="이름"></label>
+                    </div>
+                    <div class="tagArea">
+                        <label>생년월일 <input type="text" name="name" class="inputArea"></label>
+                    </div>
+                    <div class="tagArea">
+                        <label>휴대폰번호 <input type="text" name="name" class="inputArea phoneNum" placeholder="숫자만 입력"></label>
+                        <select class="inputArea carrier">
+                            <option>SKT</option>
+                            <option>KT</option>
+                            <option>LGU+</option>
+                            <option>SKT 알뜰폰</option>
+                            <option>KT 알뜰폰</option>
+                            <option>LGU+ 알뜰폰</option>
+                        </select>
+                        <button class="inputArea certification">인증하기</button>
+<!--                        <a href="">법인 회선 또는 알뜰폰을 이용하시나요?</a>-->
+                    </div>
+                    <div>
+                        <button id="btn_signUp">가입하기</button>
+                    </div>
+            </fieldset>
+        </form>
+
+    </div>
+    <div id="footer">
+
+    </div>
+
+
+
+
+<script src="js/jquery.js"></script>
+<script>
+    const $email = $(".email");
+    const $selectedEmail = $(".selectedEmail");
+
+    $(".selectedEmail").innerText("submit",function (e){
+        $email.val($selectedEmail);
+    })
+
+
+    //정규표현식 객체 생성, 첫글자 한글
+    const nicknameExp = /^[ㄱ-힣]{1}[ㄱ-힣|\d]{1,7}$/
+    //input요소
+    const $nickname = $("#nickname")
+    //msg출력하는 p요소
+    const $msg = $("#msg");
+
+    $nickname.keyup(function(){
+        const val = $nickname.val();
+        if(nicknameExp.test(val)){
+            $msg.addClass("ok").text("아주 좋은 닉네임이네요.");
+        }else{
+            $msg.removeClass("ok").text("2~8자까지 첫글자는 한글, 한글 및 숫자로 입력해주세요.~");
+        }
+    });//keyup() end
+
+</script>
+</body>
+</html>

@@ -24,25 +24,72 @@
             /*테두리 설정입니다*/
             box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
         }
-
-        .profile_setting{
-            position: absolute;
-            float: right;
-            top: 25px;
-            right: 380px;
-            background-color: #ff6f7f;
-            width: 150px;
-            height: 80px;
-        }
         /*프로필 설정 버튼입니다*/
         .profile_setting_mark{
             position: absolute;
+            width: 10px;
+            left: 610px;
+            top: 30px;
             font-weight: bold;
             font-size: 30px;
+            /*background-color: #5e5e5e;*/
+        }
+        .setting_checkbox input{
+            /*display: none;*/
+        }
+
+        .profile_setting{
+            position: absolute;
+            overflow: hidden;
+            top: 60px;
+            right: 380px;
+            width: 115px;
+            height: 85px;
+            background-color: #ff6f7f;
         }
         .popup_setting{
-            display: inline-block;
+            position: absolute;
+            border: 1px solid #2699F7;
+            border-radius: 10px;
+            background-color: #fff;
+            top:-85px;
         }
+        .profile_setting_mark input:checked+.profile_setting .popup_setting_box{
+            animation: slidedown .2s ease;
+            animation-fill-mode: both;
+        }
+        @keyframes slidedown {
+            0%{top:-85px}
+            100%{top:0}
+        }
+
+        .popup_setting_box{
+            position: relative;
+            width: 100px;
+            height: 60px;
+            text-align: right;
+            margin: 10px 5px;
+            /*display: none;*/
+            /*background-color: #bbbbbb;*/
+        }
+        .popup_setting_box span{
+            float: right;
+            display: block;
+            margin-top: 10px;
+        }
+        .profile_setting_mark:hover{
+            cursor: pointer;
+        }
+
+        /*.profile_setting_mark:active+.popup_setting{*/
+        /*    display: block;*/
+        /*}*/
+        .popup_setting span a{
+            text-decoration: none;
+            color: black;
+        }
+
+
         /*프로필과 경력사항이 포함된 필드입니다*/
         .profile{
             float: left;
@@ -355,6 +402,7 @@
             margin-top: -325px;
             width: 560px;
             height: 650px;
+            border-radius: 10px;
             background-color: #b7deff;
         }
         .badge_total_content{
@@ -365,6 +413,7 @@
             height: 550px;
             overflow-y: auto;
             overflow-x: hidden;
+            border-radius: 10px;
             background-color: #fff;
         }
         .badge_detail{
@@ -571,8 +620,8 @@
     <div id="content">
         <div class="popup_badge_total_bg">
             <div class="popup_badge_total">
-                <div class="badge_list_title">뱃지 목록
-                    <div class="badge_list_subtitle">뱃지 전체 목록 입니다. 뱃지를 획득하여 등급을 높여보세요!</div>
+                <div class="badge_list_title">전체 뱃지 목록
+                    <div class="badge_list_subtitle">뱃지를 획득하여 등급을 높여보세요!</div>
                 </div>
                 <div class="badge_total_content">
                     <ul>
@@ -675,13 +724,20 @@
                     </div>
                 </div><!--  profile_right end  -->
             </div><!--  profile end  -->
+            <label class="setting_checkbox">
+                <div class="profile_setting_mark">&vellip;
+                    <input type="checkbox">
+                </div>
+
             <div class="profile_setting">
-                <div class="profile_setting_mark">&vellip;</div>
                 <div class="popup_setting">
-                    <span><a href="">비밀번호 수정</a></span>
-                    <span><a href="">회원탈퇴</a></span>
+                    <div class="popup_setting_box">
+                        <span><a href="">비밀번호 수정</a></span>
+                        <span><a href="">회원탈퇴</a></span>
+                    </div>
                 </div>
             </div>
+            </label>
             <div class="badgeBox">
                 <div class="badge_total_count"><h3>획득 뱃지 7개</h3></div>
                 <div class="btn_badge_total"><button class="popup_badge_total_btn">전체보기</button></div>
