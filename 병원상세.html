@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>병원상세</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/notosanskr.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/iconmonstr-iconic-font.min.css">
+    <style>
+        h2, h3{
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+        h3{
+            margin: 15px 0;
+        }
+        .content_area{
+            position: relative;
+            display: block;
+            /*border: 1px solid bisque;*/
+        }
+        #map{
+            position: relative;
+            left: 50%;
+            margin-left: -250px;
+            width: 500px;
+            height: 500px;
+        }
+
+        .nav_contentBox{
+            position: relative;
+            clear: both;
+            height: 30px;
+        }
+
+        .equipment_tap_hr{
+            position: relative;
+            top: -3px;
+        }
+        .equipment_tap li {
+            float: left;
+            position: relative;
+            left: 34px;
+            /*background-color: #ff6f7f;*/
+            cursor: pointer;
+            z-index: 1;
+        }
+        .equipment_tap li.on {
+            /*border-radius: 10px;*/
+            border-bottom: 4px solid #2699F7 ;
+            /*background-color: darksalmon;*/
+        }
+        .equipment_tap li a{
+            width: 100px;
+            height: 25px;
+            display: block;
+            margin:0 2px 0 2px;
+            text-align: center;
+            line-height: 25px;
+            color: #424242;
+            text-decoration: none;
+        }
+
+        /*탭을 눌렀을때 컨텐트 내용이 들어가는 곳입니다*/
+        .equipment_tap_contents {
+            /*position: relative;*/
+            top: 10px;
+            float: left;
+            width: 780px;
+            border: 1px solid #b7deff;
+            border-radius: 10px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 10px 0;
+            padding-left: 10px;
+            height: 370px;
+            z-index: 0;
+        }
+        .equipment_tap_contents::-webkit-scrollbar{
+            width: 8px;
+            /*height: 330px;*/
+            z-index: 3;
+        }
+        .equipment_tap_contents::-webkit-scrollbar-track {
+            border-radius: 8px;
+            background-color: #e0edff;
+        }
+        .equipment_tap_contents::-webkit-scrollbar-thumb {
+            border-radius: 8px;
+            background-color: #6db6f3;
+        }
+
+        .equipment_tap_contents .tab, .equipment_description_area_kor .hover{
+            position: relative;
+            display: none;
+        }
+        .equipment_tap_contents .tab.on, .equipment_description_area_kor .hover.hoverOn {
+            display: block;
+        }
+
+        .equipment_box{
+            /*display: inline;*/
+            float: left;
+            width: 190px;
+            height: 190px;
+            /*border: 1px solid red;*/
+            transition: ease;
+            z-index: 4;
+        }
+        .equipment_tap_contents .equipment_img{
+            position: relative;
+            width: 180px;
+            left: 5px;
+            border-radius: 5px;
+            z-index: 4;
+        }
+        .equipment_box:hover{
+            /*float: left;*/
+            top: 15px;
+            transform: scale(1.1);
+            transition: ease;
+        }
+
+        .equipment_description_eng{
+            color: #2699F7;
+            size: 11px;
+        }
+        .equipment_description_area_kor{
+            /*position: relative;*/
+            top: 10px;
+            float: right;
+            overflow: auto;
+            margin-left: 20px;
+            width: 270px;
+            height: 390px;
+            border: 1px solid #b7deff;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        .equipment_description_area_kor .hover{
+            /*position: relative;*/
+            /*width: 100%;*/
+        }
+        .equipment_description_area_kor p{
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+<div id="content">
+    <div class="hospital_detail">
+        <hr>
+        <h2>병원상세</h2>
+        <div class="hospital_infomation content_area">
+            <h3>서울 동물병원</h3>
+            <p> <i class="fas fa-phone-alt"></i>02-3212-1133</p>
+        </div>
+        <div class="medical_staff content_area">
+
+        </div>
+        <div class="opening_hours content_area">
+            <h3>영업시간</h3>
+            <ul>
+                <li>월요일 07 : 30 ~ 18 : 30</li>
+                <li>월요일 07 : 30 ~ 18 : 30</li>
+                <li>월요일 07 : 30 ~ 18 : 30</li>
+                <li>월요일 07 : 30 ~ 18 : 30</li>
+                <li>월요일 07 : 30 ~ 18 : 30</li>
+                <li>월요일 07 : 30 ~ 18 : 30</li>
+                <li>월요일 07 : 30 ~ 18 : 30</li>
+            </ul>
+        </div>
+        <div class="available_animals content_area">
+            <h3>진료가능동물</h3>
+        </div>
+        <div class="equipment content_area">
+            <h3>보유장비</h3>
+            <div class="nav_contentBox">
+                <ul id="nav_content" class="equipment_tap">
+                    <li class="on">
+                        <a href="" title="한방재활운동">한방재활운동</a>
+                    </li>
+                    <li class="">
+                        <a href="" title="영상장비">영상장비</a>
+                    </li>
+                    <li class="">
+                        <a href="" title="안과">안과</a>
+                    </li>
+                    <li class="">
+                        <a href="" title="안과">내과</a>
+                    </li>
+                    <li class="">
+                        <a href="" title="안과">외과</a>
+                    </li>
+                </ul>
+                <hr class="equipment_tap_hr" width="1029px">
+            </div>
+            <div class="equipment_tap_contents">
+                <div class="tab on">
+                    <ul>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/수중러닝머신.png">
+                            <p>수중 러닝머신</p> <p class="equipment_description_eng">Under Water Treadmill</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/자세분석기.png">
+                            <p>자세분석기</p> <p class="equipment_description_eng">Posture Analysis System</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/전침기.png">
+                            <p>전침기</p> <p class="equipment_description_eng">Electro-Acupuncture Stimulator</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/운동기구.png">
+                            <p>운동기구</p> <p class="equipment_description_eng">FitPAWS Rehab Equipment</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab">
+                    <ul>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/CT.png">
+                            <p>CT</p> <p class="equipment_description_eng">GE light speed plus</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/X-Ray.png">
+                            <p>X-RAY</p> <p class="equipment_description_eng">comed titan 2000v</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/초음파.png">
+                            <p>초음파</p> <p class="equipment_description_eng">GE logiq S8</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab">
+                    <ul>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/안압계.png">
+                            <p>안압계</p> <p class="equipment_description_eng">Tonovet</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/안저검사%20렌즈.png">
+                            <p>안저검사 렌즈</p> <p class="equipment_description_eng">볼크</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/우각경.png">
+                            <p>우각경</p> <p class="equipment_description_eng">Goniolens</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/간접검안경.png">
+                            <p>간접검안경</p> <p class="equipment_description_eng">웰치아일렌</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/안과슬릿.png">
+                            <p>안과슬릿</p> <p class="equipment_description_eng">SLD7</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/안과현미경.png">
+                            <p>안과현미경</p> <p class="equipment_description_eng">Leica</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/OCT.png">
+                            <p>OCT</p> <p class="equipment_description_eng">Optovue</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/망막검사장비.png">
+                            <p>망막검사장비</p> <p class="equipment_description_eng">HMs ERG</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/안저카메라.png">
+                            <p>안저카메라</p> <p class="equipment_description_eng">Canon CR-DGI</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/첩모소락장비.png">
+                            <p>첩모소락장비</p> <p class="equipment_description_eng">ELLMAN</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab">
+                    <ul>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>혈액 가스 분석기</p> <p class="equipment_description_eng">IDEXX_VetStat Electrolyte Blood Gas Analyzer</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>혈구 분석기</p> <p class="equipment_description_eng">IDEXX_ProCyte Dx Hematology Analyzer</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>전해질 분석</p> <p class="equipment_description_eng">IDEXX_VetLyte Electrolyte Analyzer</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>혈액 화학 분석기</p> <p class="equipment_description_eng">IDEXX_Catalyst One Chemistry Analyzer</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>뇨 분석기</p> <p class="equipment_description_eng">IDEXX_VetLab UA Analyzer</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>검체 분석기</p> <p class="equipment_description_eng">IDEXX_SNAPshot Dx Analyzer</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>혈청 분석</p> <p class="equipment_description_eng">IDEXX_VetTest Chemistry Analyzer</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>벳 크로마(체외 진단기)</p> <p class="equipment_description_eng">Anivet_Vet Chroma</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>도플러 혈압계</p> <p class="equipment_description_eng">Doppler flow detector MODEL 911-B</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>투석기</p> <p class="equipment_description_eng">CRRT system(Continuous Renal ReplacementTherapy)- MultuFiltrate</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>내시경</p> <p class="equipment_description_eng">OLYMPUS GIF-XQ 260, GIF-XP 260</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>배양기</p> <p class="equipment_description_eng">Chang shin scientific Co._C-IN incubator</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>믹서</p> <p class="equipment_description_eng">TYMR-ZA_Roll mixer</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>원심 분리기</p> <p class="equipment_description_eng">DAIHAN Scientific_High-Performance Pro-microcentrifuge Set “CF-10”</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>요비중 측정기</p> <p class="equipment_description_eng">Sinotech_Hand Held Lighted Clinical Refractometer Zgrc-300atc Black Rubber</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>의약품 주입펌프(인퓨전 펌프)</p> <p class="equipment_description_eng">Daiwha_Infusion pump Medifusion DI-2000</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>의약품 주입펌프(인퓨전 펌프)</p> <p class="equipment_description_eng">Daiwha_Infusion pump Medifusion MP-100</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>수액 조절 펌프</p> <p class="equipment_description_eng">Beaconn_HY-900B Syringe Pump</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>휴대용 산소 발생기</p> <p class="equipment_description_eng">EMG technology_5LPM oxygen concentrator CTB01-A00E</p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p>적외선 조사기</p> <p class="equipment_description_eng">열린세상_적외선 조사기 IR-2009</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab">
+                    <ul>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p></p> <p class="equipment_description_eng"></p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p></p> <p class="equipment_description_eng"></p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p></p> <p class="equipment_description_eng"></p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p></p> <p class="equipment_description_eng"></p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p></p> <p class="equipment_description_eng"></p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p></p> <p class="equipment_description_eng"></p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p></p> <p class="equipment_description_eng"></p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p></p> <p class="equipment_description_eng"></p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p></p> <p class="equipment_description_eng"></p>
+                        </li>
+                        <li class="equipment_box">
+                            <img class="equipment_img" src="img/equipment/">
+                            <p></p> <p class="equipment_description_eng"></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="equipment_description_area_kor">
+                <div class="tab on">
+                    <ul>
+                        <li class="hover hoverOn">
+                            <p>수중 러닝머신</p> <p class="equipment_description_eng">&nbsp;Under Water Treadmill</p>
+                            <p><br>&nbsp; 수술 전후 재활, 피트니스 훈련을 통한 심장 재활, 체중 조절 치료에 효과적인 장비. 물의 부력을 이용하여 체중부하를 덜받으며 스스로 일어서서 운동할 수 있게 해줍니다. 일반적인 환경에서 보행이 불가능한 환자도 관절에 부담을 주지 않으며 보행 재교육이 가능하게 하는 장비입니다. 정수압에 의한 저항감을 높여 관절에 부담에 덜되며 근육 강화을 극대화 할 수 있습니다. 또한 사지 말단의 부종 개선에 도움을 줍니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>자세분석기</p> <p class="equipment_description_eng">&nbsp;Posture Analysis System</p>
+                            <p><br>&nbsp; 정상견은 체중의 60%를 앞다리로, 40%를 뒷다리로 지지하며 네 개의 다리로 고르게 체중을 지지할 때 건강한 몸을 유지할 수 있습니다. 자세 분석기는 반려견의 네 발에 지지되는 체중 부하를 분석하여 불균형이 발생하는지를 파악함으로써 재활 치료가 효과적으로 이루어지도록 도와줍니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>전침기</p> <p class="equipment_description_eng">&nbsp;Electro-Acupuncture Stimulator</p>
+                            <p><br>&nbsp; 침술은 통증완화, 염증감소, 호르몬과 면역쳬게를 조절하는 매우 좋은 효과를 가지고 있습니다. 전침은 혈자리를 지속적으로 자극함으로써 침술의 효과를 극대화 할 수 있는 치료법입니다. 특히 급만성 통증완화와 마비환자에 매우 효과적인 치료법입니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>운동기구</p> <p class="equipment_description_eng">&nbsp;FitPAWS Rehab Equipment</p>
+                            <p><br>&nbsp; 운동치료는 술후환자, 노령성 골관절염환자, 스포츠견의 퍼포먼스를 극대화하기 위한 장점을 가지고 있습니다. 운동기구를 이용하여 고유자세반응, 근력, 발란스, 보행재교육 등을 정상으로 회복시킬 수 있습니다. 또한 집에서 실시하는 운동치료를 통해 보호자와의 유대감을 증가시킬 수 있어 매우 좋습니다.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab">
+                    <ul>
+                        <li class="hover">
+                            <p>CT</p> <p class="equipment_description_eng">&nbsp;GE light speed plus</p>
+                            <p><br>&nbsp;신체에 방사선을 연속적으로 투과 시킴으로써 얻어지는 다수의 단층영상을 통해 진단하는 검사장비.
+                                연속되는 다수의 단층영상을 통해 신체의 모든 부위를 겹침 없이 영상화함으로써 신체 전반의 보다 정확한 해부학적 구조 및 병변을 평가할 수 있습니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>X-RAY</p> <p class="equipment_description_eng">&nbsp;comed titan 2000v</p>
+                            <p><br>&nbsp;방사선을 신체에 투과시켜 얻어지는 영상을 통해 진단하는 검사 장비. 두개골, 척추, 사지 골격과 관절 등의 병변 뿐 아니라 심장과 폐 그리고 간담도계, 소화기계, 비뇨기계 등 흉강 및 복강 내 장기의 이상유무를 전반적으로 확인할 수 있으며, 조영 촬영을 통해 비뇨기계 및 소화기계의 보다 정밀한 검사가 가능합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>초음파</p> <p class="equipment_description_eng">&nbsp;GE logiq S8</p>
+                            <p><br>&nbsp;초음파를 신체로 방사시켜 얻어지는 영상을 통해 진단하는 검사장비.
+                                일반 초음파
+                                - 뇌 : 두개 내 뇌실의 확장여부 확인
+                                - 안구 : 안구 및 안구 후방부의 병변 확인
+                                - 복부 : 복강내 모든 장기의 병변 확인
+                                - 피하 : 탈장, 종괴, 염증성 병변 등의 확인
+                                초음파 가이드 세포흡인 및 천자
+                                - 초음파 가이드 FNA
+                                - 흉수/복수 천자
+                                - 뇨천자
+                                심장 초음파
+                                - 심장의 구조와 움직임 및 심장 내 혈류의 용적과 압력 등을 검사함으로서 다양한 심장 질환의 정확도 높은 평가가 가능합니다.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab">
+                    <ul>
+                        <li class="hover">
+                            <p>안압계</p> <p class="equipment_description_eng">&nbsp;Tonovet</p>
+                            <p><br>&nbsp;안압 측정은 모든 안과 환자에게 시행하는 기본 검사 중 하나이며, 녹내장 환자의 진단과 치료 효과의 판단 및 경과 관찰에 필수적인 안과 검사이다. 또한 안구내 염증으로 안압이 낮아지는 포도막염 환자의 진단과 치료 과정에도 안압측정은 효과적으로 사용됩니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>안저검사 렌즈</p> <p class="equipment_description_eng">&nbsp;볼크</p>
+                            <p><br>&nbsp;안과정밀검사인 안저검사 (fundus exam) 를 위하여 필요한 렌즈이며, 시력 저하 혹은 시력 소실을 보이는 망막질환 환자의 검사에 필요한 장비이다. 망막 박리, 진행성 망막 위축증, 시신경염 등의 안과 질환의 진단에 사용됩니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>우각경</p> <p class="equipment_description_eng">&nbsp;Goniolens</p>
+                            <p><br>&nbsp;녹내장은 원발성 녹내장, 2차 녹내장으로 구분되며, 원발성 녹내장은 광우각과 협우각으로 분류됩니다. 우각경 검사는 각막과 홍채 외측부가 만나는 부위인 우각을 검사하는 방법으로, 안방수가 배출되는 부위의 개폐여부와 신생혈관 및 유착의 유무를 관찰하여 녹내장의 종류 및 치료방법 결정에 도움을 주게 됩니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>간접검안경</p> <p class="equipment_description_eng">&nbsp;웰치아일렌</p>
+                            <p><br>&nbsp;안과정밀검진시 한눈에 넓은 시야의 안저를 확인할 수 있는 검사 장비입니다. 망막 질환의 검사, 진단에 활용됩니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>안과슬릿</p> <p class="equipment_description_eng">&nbsp;SLD7</p>
+                            <p><br>&nbsp;안과정밀검사 장비로서 안구의 앞쪽 부위, 각막, 전안방, 홍채, 수정체 등을 10배~40배 까지 확대하여 안과 질병을 진단하는 장비이다. 각막, 녹내장, 백내장 등의 안과 질환의 진단에 많이 사용됩니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>안과현미경</p> <p class="equipment_description_eng">&nbsp;Leica</p>
+                            <p><br>&nbsp;수술 현미경은 백내장, 녹내장 등의 안과 미세 수술시 사용되는 장비로 안과의들이 최고의 수술 현미경으로 인정하는 스위스 Leica 수술 현미경은 줌과 포커싱 기능, XY Unit를 이용한 조명 시스템 등은 탁월한 수술 시야를 확보해주어 안전하고 원활한 수술을 가능하게 합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>OCT</p> <p class="equipment_description_eng">&nbsp;Optovue</p>
+                            <p><br>&nbsp;OCT (망막단층촬영기, Optical Coherence Tomography) 는 안구 생체 조직의 단층영상 및 횡단면을 검사하는 첨단 의료장비로, 빛을 투과시켜 안구조직 내에서 반사되는 빛의 시간 차이를 이용해 조직학적 검사 수준의 높은 해상도의 단층 영상을 얻는 새로운 기술입니다. 각막, 망막 등의 질환에서 진단 및 치료경과관찰에 있어 가장 신뢰성 있는 표준 검사로 인정되고 있습니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>망막검사장비</p> <p class="equipment_description_eng">&nbsp;HMs ERG</p>
+                            <p><br>&nbsp;망막전위도는 빛자극에 대한 망막의 반응을 전기적 신호의 파형으로 기록하는 검사이다. 망막에 위치한 빛을 받아들이는 세포들의 전기생리학적 반응과 기능에 대해 평가할 수 있어 망막 기능을 객관적으로 측정할 수 있습니다. 백내장 수술 전에 수술 후 시력 회복이 가능한지 망막 기능을 평가하는 일반적인 검사이며, 시력저하나 시력 소실시, 선천적인 망막질환의 진단시 사용되는 안과정밀검사 장비입니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>안저카메라</p> <p class="equipment_description_eng">&nbsp;Canon CR-DGI</p>
+                            <p><br>&nbsp;안저카메라는 안저(망막 및 망막혈관 등)의 상태를 관찰, 기록하여 망막질환의 진단과 관리에 사용됩니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>첩모소락장비</p> <p class="equipment_description_eng">&nbsp;ELLMAN</p>
+                            <p><br>&nbsp;엘만 Electrocautery 는 고주파 전기에너지를 이용한 수술 장비로 화상의 위험이 적으며, 안검의 잘못난 첩모의 제거 수술시 안검의 탈색, 주변부 탈모 등의 부작용을 최소화 할 수 있는 장비입니다.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab">
+                    <ul>
+                        <li class="hover">
+                            <p>혈액 가스 분석기</p> <p class="equipment_description_eng">&nbsp;IDEXX_VetStat Electrolyte Blood Gas Analyzer+</p>
+                            <p><br>&nbsp;동물 전용 혈액가스(산염기 불균형 측정) 및 전해질 분석기</p>
+                        </li>
+                        <li class="hover">
+                            <p>혈구 분석기</p> <p class="equipment_description_eng">&nbsp;IDEXX_ProCyte Dx Hematology Analyzer</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                        <li class="hover">
+                            <p>전해질 분석</p> <p class="equipment_description_eng">&nbsp;IDEXX_VetLyte Electrolyte Analyzer</p>
+                            <p><br>&nbsp;전해질(Na+, Cl-, K+) 수치를 원내에서 신속하게 측정하여 교정합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>혈액 화학 분석기</p> <p class="equipment_description_eng">&nbsp;IDEXX_Catalyst One Chemistry Analyzer</p>
+                            <p><br>&nbsp;기본적인 혈청 검사 (간, 신장, 췌장, 혈당 등의 수치), SDMA(신장 조기검진), T4(갑상선 검사), fructosamine(당뇨 검진), phenobarbital 농도(간질 약물 농도) 검사가 원내에서 가능합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>뇨 분석기</p> <p class="equipment_description_eng">&nbsp;IDEXX_VetLab UA Analyzer</p>
+                            <p><br>&nbsp; </p>
+                        </li>
+                        <li class="hover">
+                            <p>검체 분석기</p> <p class="equipment_description_eng">&nbsp;IDEXX_SNAPshot Dx Analyzer</p>
+                            <p><br>&nbsp;췌장염, 쿠싱병, 에디슨병 등과 같은 호르몬 질환, 주혈 기생충 질환에 대한 검사가 가능합니다. IDEXX_Coag Dx Analyzer- PT, APTT 검사를 통해 혈액 응고 장애를 검사합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>혈청 분석</p> <p class="equipment_description_eng">&nbsp;IDEXX_VetTest Chemistry Analyzer</p>
+                            <p><br>&nbsp;혈액중 혈청 성분을 분석하여 간, 신장, 췌장, 혈당 등의 수치를 평가하여 여러 질환을 병원내에서 30분이내 신속하게 검사할 수 있는 동물전용 검사장비입니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>벳 크로마(체외 진단기)</p> <p class="equipment_description_eng">&nbsp;Anivet_Vet Chroma</p>
+                            <p><br>&nbsp;급성 염증, 혈전 수치 및 췌장염 수치를 검사합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>도플러 혈압계</p> <p class="equipment_description_eng">&nbsp;Doppler flow detector MODEL 911-B</p>
+                            <p><br>&nbsp;정확한 혈압을 측정합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>투석기</p> <p class="equipment_description_eng">&nbsp;CRRT system(Continuous Renal ReplacementTherapy)- MultuFiltrate</p>
+                            <p><br>&nbsp;지속적 신대체요법에 사용되는 인공신장기는 신부전증 또는 중독증 환자의 혈액투석을 목적으로 조작부 및 체외혈액시스템 등으로 구성 되어 있으며, 체외혈액시스템은 혈액펌프, 여과액 펌프, 투석액 펌프, 보충액 펌프, 히터, 기포탐지기, 경보장치 등으로 구성되어 있습니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>내시경</p> <p class="equipment_description_eng">&nbsp;OLYMPUS GIF-XQ 260, GIF-XP 260</p>
+                            <p><br>&nbsp;크기 별 두 가지의 내시경 장비가 구축되어 소형견의 내시경 검사를 용이하게 수행합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>배양기</p> <p class="equipment_description_eng">&nbsp;Chang shin scientific Co._C-IN incubator</p>
+                            <p><br>&nbsp;세균 및 곰팡이 배양기로 원내에서 항생제 감수성 검사 및 곰팡이 배양이 가능합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>믹서</p> <p class="equipment_description_eng">&nbsp;TYMR-ZA_Roll mixer</p>
+                            <p><br>&nbsp;혈액과 체액, 뇨등을 균질하게 섞어 검사의 정확도를 높힙니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>원심 분리기</p> <p class="equipment_description_eng">&nbsp;DAIHAN Scientific_High-Performance Pro-microcentrifuge Set “CF-10”</p>
+                            <p><br>&nbsp;혈청, 혈장을 분리하는 장비로 혈액검사 시에 사용됩니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>요비중 측정기</p> <p class="equipment_description_eng">&nbsp;Sinotech_Hand Held Lighted Clinical Refractometer Zgrc-300atc Black Rubber</p>
+                            <p><br>&nbsp;요비중계는 소변의 농축 정도를 측정하여 환자의 신장 기능 평가에 활용됩니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>의약품 주입펌프(인퓨전 펌프)</p> <p class="equipment_description_eng">&nbsp;Daiwha_Infusion pump Medifusion DI-2000</p>
+                            <p><br>&nbsp;체구가 작은 동물들의 안전한 수액공급을 위해 사용되는 의료장비로 수액이 막히거나 공기 발생시 알람과 함께 수액 공급이 중단되어 사고를 미연에 방지합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>의약품 주입펌프(인퓨전 펌프)</p> <p class="equipment_description_eng">&nbsp;Daiwha_Infusion pump Medifusion MP-100</p>
+                            <p><br>&nbsp;체구가 작은 동물들의 안전한 수액공급을 위해 사용되는 의료장비로 수액이 막히거나 공기 발생시 알람과 함께 수액 공급이 중단되어 사고를 미연에 방지합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>수액 조절 펌프</p> <p class="equipment_description_eng">&nbsp;Beaconn_HY-900B Syringe Pump</p>
+                            <p><br>&nbsp;소량의 약물을 주입하거나 약물 용량의 미세하고 정확한 조절이 필요할 때 사용하는 수액 조절 펌프로 0.1ml 단위로 조절이 가능합니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>휴대용 산소 발생기</p> <p class="equipment_description_eng">&nbsp;EMG technology_5LPM oxygen concentrator CTB01-A00E</p>
+                            <p><br>&nbsp;휴대용 산소 발생기입니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>적외선 조사기</p> <p class="equipment_description_eng">&nbsp;열린세상_적외선 조사기 IR-2009</p>
+                            <p><br>&nbsp;저체온증 환자의 가온 처치에 사용됩니다.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab">
+                    <ul>
+                        <li class="hover">
+                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                        <li class="hover">
+                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                        <li class="hover">
+                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                        <li class="hover">
+                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                        <li class="hover">
+                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                        <li class="hover">
+                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                        <li class="hover">
+                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                        <li class="hover">
+                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                        <li class="hover">
+                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                        <li class="hover">
+                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="facility_service content_area">
+            <h3>시설/서비스</h3>
+        </div>
+        <div class="location content_area">
+            <h3>위치</h3>
+            <p class="address">서울특별시 관악구 에그옐로우 14층</p>
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/underscore-min.js"></script>
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb337826ba14109ec65b6b653b9743d1"></script>
+<script>
+    var container = document.getElementById('map');
+
+    //맵을 만들때 옵션들
+    var options = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3
+    };
+
+    var map = new kakao.maps.Map(container, options);
+
+    // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+    var mapTypeControl = new kakao.maps.MapTypeControl();
+
+    // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+    // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+    map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMLEFT);
+
+    // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+    var zoomControl = new kakao.maps.ZoomControl();
+    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+    // 마커가 표시될 위치입니다
+    var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667);
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+
+    // 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
+
+
+
+    // 컨텐트 탭을 눌렀을 때
+    $(".equipment_tap li").click(function (e) {
+
+        //1) a요소의 링크이동 막기
+        e.preventDefault();
+        //2) 기존의 on클래스를 제거
+        $(".equipment_description_area_kor .on").removeClass("on");
+        $(".on").removeClass("on");
+        //3) 우리가 클릭한 그 li요소에 on클래스를 더함
+        $(this).addClass("on");
+        //4) 우리가 클릭한 그 요소의 index를 얻어옴
+        const tabIdx = $(this).index();
+        //5) .tab요소들 중 해당 index에 있는 요소에
+        //   on클래스를 더함
+        $(".tab").eq(tabIdx).addClass("on");
+        $(".equipment_description_area_kor .tab").eq(tabIdx).addClass("on");
+    });//.shop_tab li click() end
+
+    $(".equipment_tap_contents li").hover(function (e) {
+        //2) 기존의 on클래스를 제거
+        $(".hover").removeClass("hoverOn");
+        //3) 우리가 클릭한 그 li요소에 on클래스를 더함
+        $(this).addClass("hoverOn");
+        //4) 우리가 클릭한 그 요소의 index를 얻어옴
+        const parentIdx = $(this).parent().index();
+        const idx = $(this).index();
+        //5) .tab요소들 중 해당 index에 있는 요소에
+        //   on클래스를 더함
+        $(".equipment_description_area_kor .on li").eq(idx).addClass("hoverOn");
+    })
+</script>
+
+
+</body>
+</html>
