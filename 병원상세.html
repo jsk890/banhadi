@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/iconmonstr-iconic-font.min.css">
     <style>
+        /*제목*/
         h2, h3{
             font-weight: 700;
             font-size: 20px;
             margin-bottom: 40px;
-            display: inline-block;
+            /*display: inline-block;*/
         }
         h3{
             margin: 15px 0;
@@ -30,30 +31,38 @@
             width: 500px;
             height: 500px;
         }
+        .input_area{
+            display: none;
+        }
+        .input_area.on{
+            display: block;
+        }
 
+        /*보유장비 네비게이션 박스*/
         .nav_contentBox{
             position: relative;
             clear: both;
             height: 30px;
         }
-
         .equipment_tap_hr{
             position: relative;
             top: -3px;
+
         }
+        /*보유장비 네비게이션 탭 리스트*/
         .equipment_tap li {
             float: left;
             position: relative;
             left: 34px;
-            /*background-color: #ff6f7f;*/
             cursor: pointer;
             z-index: 1;
+
         }
+        /*보유장비 네비게이션 탭이 클릭 됐을때*/
         .equipment_tap li.on {
-            /*border-radius: 10px;*/
             border-bottom: 4px solid #2699F7 ;
-            /*background-color: darksalmon;*/
         }
+        /*탭 a링크*/
         .equipment_tap li a{
             width: 100px;
             height: 25px;
@@ -64,11 +73,16 @@
             color: #424242;
             text-decoration: none;
         }
+        /*보유장비 영역*/
+        .equipment.content_area{
+            /*background-color: #5e5e5e;*/
+            height: 490px;
 
-        /*탭을 눌렀을때 컨텐트 내용이 들어가는 곳입니다*/
+        }
+
+        /*탭을 눌렀을때 컨텐트에 내용이 들어가는 곳*/
         .equipment_tap_contents {
-            /*position: relative;*/
-            top: 10px;
+            margin-top: 10px;
             float: left;
             width: 780px;
             border: 1px solid #b7deff;
@@ -78,12 +92,10 @@
             padding: 10px 0;
             padding-left: 10px;
             height: 370px;
-            z-index: 0;
         }
+        /*보유장비 탭 컨텐트 스크롤 설정*/
         .equipment_tap_contents::-webkit-scrollbar{
             width: 8px;
-            /*height: 330px;*/
-            z-index: 3;
         }
         .equipment_tap_contents::-webkit-scrollbar-track {
             border-radius: 8px;
@@ -94,6 +106,7 @@
             background-color: #6db6f3;
         }
 
+        /*탭영역을 클릭했을 때, 장비사진에 마우스를 올렸을 때*/
         .equipment_tap_contents .tab, .equipment_description_area_kor .hover{
             position: relative;
             display: none;
@@ -102,51 +115,156 @@
             display: block;
         }
 
+        /*장비사진과 이름이 들어가는 곳*/
         .equipment_box{
-            /*display: inline;*/
             float: left;
             width: 190px;
             height: 190px;
-            /*border: 1px solid red;*/
             transition: ease;
-            z-index: 4;
         }
+        /*장비 사진이 들어가는 곳*/
         .equipment_tap_contents .equipment_img{
             position: relative;
             width: 180px;
             left: 5px;
             border-radius: 5px;
-            z-index: 4;
         }
+        /*장비 사진 위에 마우스를 올렸을 때*/
         .equipment_box:hover{
-            /*float: left;*/
             top: 15px;
             transform: scale(1.1);
             transition: ease;
+            cursor: pointer;
         }
 
+        /*장비를 클릭하고 담는 공간*/
+        .equipment_basket{
+            position: relative;
+            height: 50px;
+            border-radius: 10px;
+            padding: 5px 5px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background-color: #b7deff;
+        }
+        .equipment_basket li{
+            /*display: block;*/
+            margin-bottom: 5px;
+            font-size: 13px;
+            float: left;
+        }
+        .equipment_basket .far.fa-times-circle{
+            color: #ff6f7f;
+        }
+        .equipment_basket .far.fa-times-circle:hover{
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+
+
+
+        /*장비 영어 설명*/
         .equipment_description_eng{
             color: #2699F7;
             size: 11px;
         }
+        /*장비 한글 상세설명 구역*/
         .equipment_description_area_kor{
             /*position: relative;*/
-            top: 10px;
+            margin-top: 10px;
             float: right;
             overflow: auto;
             margin-left: 20px;
-            width: 270px;
-            height: 390px;
+            width: 260px;
+            height: 370px;
             border: 1px solid #b7deff;
             border-radius: 10px;
-            padding: 5px;
-        }
-        .equipment_description_area_kor .hover{
-            /*position: relative;*/
-            /*width: 100%;*/
+            padding: 10px;
         }
         .equipment_description_area_kor p{
             float: left;
+        }
+        .opening_time_detail li{
+            float: left;
+        }
+
+
+
+        .medical_staff_content{
+            position: relative;
+            left: 50%;
+            margin-left: -500px;
+            display: flex;
+        }
+        .profile_detail_box{
+            background-color: #ff6f7f;
+            position: relative;
+            width: 250px;
+            height: 400px;
+        }
+        .profile_detail{
+            position: relative;
+            width: 220px;
+            height: 300px;
+            margin: auto;
+            top: 10px;
+            background-color: #b7deff;
+        }
+        .profile_detail .img_profile{
+            position: relative;
+            width: 200px;
+            display: block;
+            margin: auto;
+        }
+        .doctor_info{
+
+            margin-top: 15px;
+            text-align: center;
+        }
+        .doctor_info .profile_name{
+            font-size: 25px;
+        }
+        .doctor_info .job{
+            font-size: 15px;
+        }
+        .doctor_info .job_position{
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .profile_career{
+            position: relative;
+            width: 550px;
+            height: 400px;
+            background-color: #bbbbbb;
+        }
+        .career_list{
+            position: relative;
+            width: 500px;
+            height: 350px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: sandybrown;
+        }
+        .career_list li{
+            margin-bottom: 30px;
+        }
+
+        .staff_list_area{
+            position: relative;
+            width: 200px;
+            height: 400px;
+            background-color: #ff6f7f;
+        }
+        .staff_list li{
+            float: left;
+            height: 130px;
+            text-align: center;
+        }
+        .staff_list .img_profile{
+            width: 90px;
+            height: 90px;
         }
 
     </style>
@@ -158,23 +276,140 @@
         <h2>병원상세</h2>
         <div class="hospital_infomation content_area">
             <h3>서울 동물병원</h3>
-            <p> <i class="fas fa-phone-alt"></i>02-3212-1133</p>
-        </div>
+            <p> <i class="fas fa-phone-alt"></i> 02-3212-1133</p>
+        </div><!--        .hospital_infomation end-->
         <div class="medical_staff content_area">
+            <h3>의료진</h3>
+            <div class="medical_staff_content">
+                <div class="profile_detail_box">
+                    <div class="profile_detail">
+                        <ul>
+                            <li>
+                                <img class="img_profile" src="img/doctor.png">
+                                <div class="doctor_info">
+                                    <ul>
+                                        <li class="profile_name">김준호 <span class="job">수의사</span></li>
+                                        <li class="job_position">대표원장</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!--  profile_detail end  -->
 
+                <div class="profile_career">
+                    <div class="career_title"><h3>경력사항</h3></div>
+                    <div class="career_list">
+                        <ul>
+                            <li>ACVO (American College of Veterinary Ophthalmologists) 참석</li>
+                            <li>JVMS SCI 안과 논문 등제 「A case of unusual persistent pupillary membrane with total anterior capsular pigmentation」</li>
+                            <li>홍콩 아시아 수의안과 학회 발표</li>
+                            <li>부산 한국 수의안과 연구회 총회 발표</li>
+                            <li>ACVO (American College of Veterinary Ophthalmologists) 발표</li>
+                        </ul>
+                    </div>
+                </div><!--  profile_career end  -->
+                <div class="staff_list_area">
+                    <div class="staff_list">
+                        <ul>
+                            <li><img class="img_profile" src="img/doctor.png">
+                                <p class="profile_name">김준호</p> <p class="job">수의사</p></li>
+                            <li><img class="img_profile" src="img/doctor.png">
+                                <p class="profile_name">김준호</p> <p class="job">수의사</p></li>
+                            <li><img class="img_profile" src="img/doctor.png">
+                                <p class="profile_name">김준호</p> <p class="job">수의사</p></li>
+                            <li><img class="img_profile" src="img/doctor.png">
+                                <p class="profile_name">김준호</p> <p class="job">수의사</p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="opening_hours content_area">
-            <h3>영업시간</h3>
-            <ul>
-                <li>월요일 07 : 30 ~ 18 : 30</li>
-                <li>월요일 07 : 30 ~ 18 : 30</li>
-                <li>월요일 07 : 30 ~ 18 : 30</li>
-                <li>월요일 07 : 30 ~ 18 : 30</li>
-                <li>월요일 07 : 30 ~ 18 : 30</li>
-                <li>월요일 07 : 30 ~ 18 : 30</li>
-                <li>월요일 07 : 30 ~ 18 : 30</li>
-            </ul>
-        </div>
+            <h3>영업시간</h3> <input type="button" class="opening_time_add_btn" value="추가">
+            <div class="opening_hours_input_area">
+                <div class="input_area">
+                    <select class="day_of_the_week">
+                        <option value="월요일">월요일</option>
+                        <option value="화요일">화요일</option>
+                        <option value="수요일">수요일</option>
+                        <option value="목요일">목요일</option>
+                        <option value="금요일">금요일</option>
+                        <option value="토요일">토요일</option>
+                        <option value="일요일">일요일</option>
+                    </select>
+                    <select class="open_hours">
+                        <option>00</option>
+                        <option>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                        <option>04</option>
+                        <option>05</option>
+                        <option>06</option>
+                        <option>07</option>
+                        <option>08</option>
+                        <option>09</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                    </select>
+                     :
+                    <select class="open_minute">
+                        <option>00</option>
+                        <option>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                        <option>04</option>
+                        <option>05</option>
+                        <option>06</option>
+                        <option>07</option>
+                        <option>08</option>
+                        <option>09</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                    </select>
+                    ~
+                    <select class="close_hours">
+                        <option>00</option>
+                        <option>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                        <option>04</option>
+                        <option>05</option>
+                        <option>06</option>
+                        <option>07</option>
+                        <option>08</option>
+                        <option>09</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                    </select>
+                    :
+                    <select class="close_minute">
+                        <option>00</option>
+                        <option>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                        <option>04</option>
+                        <option>05</option>
+                        <option>06</option>
+                        <option>07</option>
+                        <option>08</option>
+                        <option>09</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                    </select>
+
+                </div>
+                <div class="opening_time_list">
+                    <ul>
+                    </ul>
+                </div>
+            </div><!--  profile_career end  -->
+
+        </div><!--        .opening_hours end-->
         <div class="available_animals content_area">
             <h3>진료가능동물</h3>
         </div>
@@ -201,6 +436,7 @@
                 <hr class="equipment_tap_hr" width="1029px">
             </div>
             <div class="equipment_tap_contents">
+<!--                한방재활운동장비 사진과 이름 리스트-->
                 <div class="tab on">
                     <ul>
                         <li class="equipment_box">
@@ -221,6 +457,7 @@
                         </li>
                     </ul>
                 </div>
+<!--                영상장비 사진과 이름 리스트-->
                 <div class="tab">
                     <ul>
                         <li class="equipment_box">
@@ -237,6 +474,7 @@
                         </li>
                     </ul>
                 </div>
+<!--                안과장비 사진과 이름 리스트-->
                 <div class="tab">
                     <ul>
                         <li class="equipment_box">
@@ -281,136 +519,139 @@
                         </li>
                     </ul>
                 </div>
+<!--                내과장비 사진과 이름 리스트-->
                 <div class="tab">
                     <ul>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/혈액가스분석기.png">
                             <p>혈액 가스 분석기</p> <p class="equipment_description_eng">IDEXX_VetStat Electrolyte Blood Gas Analyzer</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/혈구분석기.png">
                             <p>혈구 분석기</p> <p class="equipment_description_eng">IDEXX_ProCyte Dx Hematology Analyzer</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/전해질분석.png">
                             <p>전해질 분석</p> <p class="equipment_description_eng">IDEXX_VetLyte Electrolyte Analyzer</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/혈액화학분석기.png">
                             <p>혈액 화학 분석기</p> <p class="equipment_description_eng">IDEXX_Catalyst One Chemistry Analyzer</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/뇨분석기.png">
                             <p>뇨 분석기</p> <p class="equipment_description_eng">IDEXX_VetLab UA Analyzer</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/검체분석기.png">
                             <p>검체 분석기</p> <p class="equipment_description_eng">IDEXX_SNAPshot Dx Analyzer</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/혈청분석.png">
                             <p>혈청 분석</p> <p class="equipment_description_eng">IDEXX_VetTest Chemistry Analyzer</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/벳크로마(체외진단기).png">
                             <p>벳 크로마(체외 진단기)</p> <p class="equipment_description_eng">Anivet_Vet Chroma</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/도플러혈압계.png">
                             <p>도플러 혈압계</p> <p class="equipment_description_eng">Doppler flow detector MODEL 911-B</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/투석기.png">
                             <p>투석기</p> <p class="equipment_description_eng">CRRT system(Continuous Renal ReplacementTherapy)- MultuFiltrate</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/내시경.png">
                             <p>내시경</p> <p class="equipment_description_eng">OLYMPUS GIF-XQ 260, GIF-XP 260</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/배양기.png">
                             <p>배양기</p> <p class="equipment_description_eng">Chang shin scientific Co._C-IN incubator</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/믹서.png">
                             <p>믹서</p> <p class="equipment_description_eng">TYMR-ZA_Roll mixer</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/원심분리기.png">
                             <p>원심 분리기</p> <p class="equipment_description_eng">DAIHAN Scientific_High-Performance Pro-microcentrifuge Set “CF-10”</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/요비중측정기.png">
                             <p>요비중 측정기</p> <p class="equipment_description_eng">Sinotech_Hand Held Lighted Clinical Refractometer Zgrc-300atc Black Rubber</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/의약품주입펌프.png">
                             <p>의약품 주입펌프(인퓨전 펌프)</p> <p class="equipment_description_eng">Daiwha_Infusion pump Medifusion DI-2000</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/의약품주입펌프2.png">
                             <p>의약품 주입펌프(인퓨전 펌프)</p> <p class="equipment_description_eng">Daiwha_Infusion pump Medifusion MP-100</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/수액조절펌프.png">
                             <p>수액 조절 펌프</p> <p class="equipment_description_eng">Beaconn_HY-900B Syringe Pump</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/휴대용산소발생기.png">
                             <p>휴대용 산소 발생기</p> <p class="equipment_description_eng">EMG technology_5LPM oxygen concentrator CTB01-A00E</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
+                            <img class="equipment_img" src="img/equipment/적외선조사기.png">
                             <p>적외선 조사기</p> <p class="equipment_description_eng">열린세상_적외선 조사기 IR-2009</p>
                         </li>
                     </ul>
                 </div>
+<!--                외과장비 사진과 이름 리스트-->
                 <div class="tab">
                     <ul>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
-                            <p></p> <p class="equipment_description_eng"></p>
+                            <img class="equipment_img" src="img/equipment/환자모니터링기계.png">
+                            <p>환자모니터링 기계</p> <p class="equipment_description_eng">Air/Suction conditioning</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
-                            <p></p> <p class="equipment_description_eng"></p>
+                            <img class="equipment_img" src="img/equipment/PlasmaSterilizer.png">
+                            <p>plasma sterilizer</p> <p class="equipment_description_eng">MK-PL35</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
-                            <p></p> <p class="equipment_description_eng"></p>
+                            <img class="equipment_img" src="img/equipment/Autoclave.png">
+                            <p>autoclave</p> <p class="equipment_description_eng">MK CLAVE</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
-                            <p></p> <p class="equipment_description_eng"></p>
+                            <img class="equipment_img" src="img/equipment/Laser치료기.png">
+                            <p>Laser 치료기</p> <p class="equipment_description_eng">RA-25PLUS</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
-                            <p></p> <p class="equipment_description_eng"></p>
+                            <img class="equipment_img" src="img/equipment/복강경.png">
+                            <p>복강경</p> <p class="equipment_description_eng">SurgAssist</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
-                            <p></p> <p class="equipment_description_eng"></p>
+                            <img class="equipment_img" src="img/equipment/리가슈어.png">
+                            <p>리가 슈어</p> <p class="equipment_description_eng">FORCETRIAD</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
-                            <p></p> <p class="equipment_description_eng"></p>
+                            <img class="equipment_img" src="img/equipment/C-arm.png">
+                            <p>C-arm</p> <p class="equipment_description_eng">KMC650</p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
-                            <p></p> <p class="equipment_description_eng"></p>
+                            <img class="equipment_img" src="img/equipment/정형외과골절세트.png">
+                            <p>정형외과 골절 세트(Small/Large)</p> <p class="equipment_description_eng"></p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
-                            <p></p> <p class="equipment_description_eng"></p>
+                            <img class="equipment_img" src="img/equipment/정형외과TPLO세트.png">
+                            <p>정형외과 TPLO 세트</p> <p class="equipment_description_eng"></p>
                         </li>
                         <li class="equipment_box">
-                            <img class="equipment_img" src="img/equipment/">
-                            <p></p> <p class="equipment_description_eng"></p>
+                            <img class="equipment_img" src="img/equipment/신경외과수술세트.png">
+                            <p>신경외과 수술 세트</p> <p class="equipment_description_eng"></p>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="equipment_description_area_kor">
+<!--                한방재활운동장비 한글 상세설명-->
                 <div class="tab on">
                     <ul>
                         <li class="hover hoverOn">
@@ -431,6 +672,7 @@
                         </li>
                     </ul>
                 </div>
+<!--                영상장비 한글 상세설명-->
                 <div class="tab">
                     <ul>
                         <li class="hover">
@@ -459,6 +701,7 @@
                         </li>
                     </ul>
                 </div>
+<!--                안과장비 한글 상세설명-->
                 <div class="tab">
                     <ul>
                         <li class="hover">
@@ -503,6 +746,7 @@
                         </li>
                     </ul>
                 </div>
+<!--                내과장비 한글 상세설명-->
                 <div class="tab">
                     <ul>
                         <li class="hover">
@@ -587,71 +831,95 @@
                         </li>
                     </ul>
                 </div>
+<!--                외과장비 한글 상세설명-->
                 <div class="tab">
                     <ul>
                         <li class="hover">
-                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p>환자모니터링 기계</p> <p class="equipment_description_eng">&nbsp;Air/Suction conditioning</p>
+                            <p><br>&nbsp;마취시 심전도, EtCo2, bpm, SpO2,RR 등을 실시간으로 측정합니다. 마취가스 및 산소 농도 조절.</p>
+                        </li>
+                        <li class="hover">
+                            <p>plasma sterilizer</p> <p class="equipment_description_eng">&nbsp;MK-PL35</p>
+                            <p><br>&nbsp;플라즈마 멸균기는 고에너지의 하전 입자를 포함하기 때문에 다른 물질들과 활발히 반응하여 대상 물질을 물리적, 화학적으로 변화시킬 수 있으므로 플라즈마 처리를 통해 멸균하여 철저한 멸균상태에서 수술이 가능하게 지원해 줍니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>autoclave</p> <p class="equipment_description_eng">&nbsp;MK CLAVE</p>
+                            <p><br>&nbsp;오토클래이브 고압 멸균기는 고온도, 고압하에서 여러 가지 화학 반응을 통해 멸균이 가능하여 멸균 수술을 가능하게 해 줍니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>Laser 치료기</p> <p class="equipment_description_eng">&nbsp;RA-25PLUS</p>
+                            <p><br>&nbsp;레이져 치료기(적응증: 점, 검버섯, 사마귀, 티눈, 한관종, 곤지름, 알레르기성 비염, 코골이, 포경수술, 일반절개)</p>
+                        </li>
+                        <li class="hover">
+                            <p>복강경</p> <p class="equipment_description_eng">&nbsp;SurgAssist</p>
+                            <p><br>&nbsp;최소 침습 수술 방법으로 0.5~1.5cm 크기의 작은 구멍을 통해서 특수 카메라가 장착된 내시경을 넣어 복강 내를 보면서 수술하는 방식입니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>리가 슈어</p> <p class="equipment_description_eng">&nbsp;FORCETRIAD</p>
+                            <p><br>&nbsp;초음파 진동에너지를 이용하여 수술부위를 간단하고 안전하게 출혈이 없이 절제가 가능한 의료 장비입니다. 강력한 지혈효과를 나타내고 조직의 손상과 부작용이 없습니다.</p>
+                        </li>
+                        <li class="hover">
+                            <p>C-arm</p> <p class="equipment_description_eng">&nbsp;KMC650</p>
                             <p><br>&nbsp;</p>
                         </li>
                         <li class="hover">
-                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
-                            <p><br>&nbsp;</p>
+                            <p>정형외과 골절 세트(Small/Large)</p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;소형, 중형, 대형 동물의 골절시에 골절 수복 수술시에 핀이나 플래이트를 적용하기 위한 수술 세트</p>
                         </li>
                         <li class="hover">
-                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
-                            <p><br>&nbsp;</p>
+                            <p>정형외과 TPLO 세트</p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;중형 이상의 전십자 인대의 단열시에 경골 근위부를 절골하여 관절 구조를 개선해 주는 전십자 인대 수술 장비</p>
                         </li>
                         <li class="hover">
-                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
-                            <p><br>&nbsp;</p>
-                        </li>
-                        <li class="hover">
-                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
-                            <p><br>&nbsp;</p>
-                        </li>
-                        <li class="hover">
-                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
-                            <p><br>&nbsp;</p>
-                        </li>
-                        <li class="hover">
-                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
-                            <p><br>&nbsp;</p>
-                        </li>
-                        <li class="hover">
-                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
-                            <p><br>&nbsp;</p>
-                        </li>
-                        <li class="hover">
-                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
-                            <p><br>&nbsp;</p>
-                        </li>
-                        <li class="hover">
-                            <p></p> <p class="equipment_description_eng">&nbsp;</p>
-                            <p><br>&nbsp;</p>
+                            <p>신경외과 수술 세트</p> <p class="equipment_description_eng">&nbsp;</p>
+                            <p><br>&nbsp;신경외과 (AAI, IVDD: 목, 허리 부위의 디스크) 질환의 수술시에 사용되는 High speed BUR 와 포셉 세트</p>
                         </li>
                     </ul>
                 </div>
 
             </div>
         </div>
+<!--        장비사진을 클릭하면 이곳에 담고 해제할 수 있도록-->
+        <div class="equipment_basket">
+            <ul>
+            </ul>
+        </div>
 
         <div class="facility_service content_area">
             <h3>시설/서비스</h3>
-        </div>
+        </div><!--        .facility_service end-->
         <div class="location content_area">
             <h3>위치</h3>
             <p class="address">서울특별시 관악구 에그옐로우 14층</p>
             <div id="map"></div>
-        </div>
+        </div><!--        .location end-->
     </div>
 </div>
 
-
+<script type="text/template" id="openingTimeTmpl">
+    <li class="opening_time_box">
+        <div class="opening_time_detail">
+            <ul>
+                <li class="days_of_the_week"><span class="day_of_the_week_value"></span> &nbsp;</li>
+                <li class="opening_time"> <span class="open_time_hour_value"></span> : <span class="close_time_minute_value"></span>&nbsp;</li>
+                <li class="close_time">~&nbsp;<span class="close_time_hour_value"></span> : <span class="close_time_minute_value"></span></li><br>
+            </ul>
+        </div>
+    </li>
+</script>
 <script src="js/jquery.js"></script>
 <script src="js/underscore-min.js"></script>
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb337826ba14109ec65b6b653b9743d1"></script>
 <script>
+
+
+    const openingTimeTmpl = _.template($("#openingTimeTmpl").html());
+    const $openingTimeList = $(".opening_time_list ul");
+
+    // 카카오맵 설정 #########################################################
+    // #####################################################################
+    // #####################################################################
     var container = document.getElementById('map');
 
     //맵을 만들때 옵션들
@@ -686,7 +954,9 @@
 
 
 
-    // 컨텐트 탭을 눌렀을 때
+    // 보유장비 컨텐트 탭을 눌렀을 때 ############################################
+    // #####################################################################
+    // #####################################################################
     $(".equipment_tap li").click(function (e) {
 
         //1) a요소의 링크이동 막기
@@ -702,20 +972,68 @@
         //   on클래스를 더함
         $(".tab").eq(tabIdx).addClass("on");
         $(".equipment_description_area_kor .tab").eq(tabIdx).addClass("on");
-    });//.shop_tab li click() end
+    });//.equipment_tap li click() end
 
+    // 보유장비 사진을 호버했을 때###############################################
+    // #####################################################################
+    // #####################################################################
     $(".equipment_tap_contents li").hover(function (e) {
         //2) 기존의 on클래스를 제거
-        $(".hover").removeClass("hoverOn");
+        $(".hoverOn").removeClass("hoverOn");
         //3) 우리가 클릭한 그 li요소에 on클래스를 더함
         $(this).addClass("hoverOn");
         //4) 우리가 클릭한 그 요소의 index를 얻어옴
-        const parentIdx = $(this).parent().index();
         const idx = $(this).index();
         //5) .tab요소들 중 해당 index에 있는 요소에
         //   on클래스를 더함
         $(".equipment_description_area_kor .on li").eq(idx).addClass("hoverOn");
     })
+
+    const $equipmentBasket = $(".equipment_basket ul");
+
+    $(".equipment_box").on("click",function (){
+
+        const $equipmentName = $(".equipment_box.hoverOn p:nth-child(2)").text();
+        $equipmentBasket.append("<li>"+$equipmentName+"&nbsp;<i class=\"far fa-times-circle\"></i>&nbsp;&nbsp;&nbsp;"+"</li>");
+    })
+
+    //새로 생성된 요소는 3개짜리를 쓴다
+    // 세번째가 새로 생성된 애를 넣는 부분
+    $(".equipment_basket").on("click",".far.fa-times-circle",function () {
+        $(this).parent().remove();
+    });//#opening_time_list click()
+
+
+    // 영업시간 추가버튼을 눌렀을 때 #############################################
+    // #####################################################################
+    // #####################################################################
+
+    $(".opening_time_add_btn").click(function () {
+        $(".input_area").toggleClass("on");
+
+        if($(".input_area").hasClass("on")){
+            $(".opening_time_add_btn").text("저장");
+        }else{
+            const $dayOfTheWeek = $(".day_of_the_week option:selected").val();
+            const $openHours = $(".open_hours").val();
+            const $openMinute = $(".open_minute").val();
+            const $closeHours = $(".close_hours").val();
+            const $closeMinute = $(".close_minute").val();
+            $(".day_of_the_week_value").text($dayOfTheWeek);
+            $(".open_time_hour_value").text($openHours);
+            $(".open_time_minute_value").text($openMinute);
+            $(".close_time_hour_value").text($closeHours);
+            $(".close_time_minute_value").text($closeMinute);
+
+            $(".opening_time_add_btn").text("추가");
+            $openingTimeList.append(openingTimeTmpl());
+        }
+    });//#opening_time_add_btn click()
+
+
+
+
+
 </script>
 
 
