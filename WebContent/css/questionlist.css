@@ -1,0 +1,635 @@
+@charset "UTF-8";
+
+
+		.wholeWrap {
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .75);
+            background-repeat: no-repeat;
+            background-position: center;
+            display: none;
+        }
+
+        #myPetList {
+            width: 410px;
+            height: 160px;
+            border: 2px solid #DFF2FF;
+            border-radius: 4px;
+        }
+
+        #myPetList li {
+            width: 120px;
+            height: 135px;
+            float: left;
+            margin: 15px 5px;
+        }
+        
+        #myPetList li:hover {
+        	background-color:#DFF2FF;
+            cursor: pointer;
+        }
+		
+		        .toggle {
+        	background-color:#DFF2FF;
+    
+        }
+        
+
+        #myPetList img {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #2699f7;
+            border-radius: 50%;
+            margin-bottom: 15px;
+
+        }
+
+        .wholeWrap #popup_counsel {
+            width: 600px;
+            height: 280px;
+            background: white;
+            position: absolute;
+            left: 50%;
+            margin-left: -300px;
+            top: 300px;
+            text-align: center;
+            padding-top: 5px;
+            border-radius: 4px;
+        }
+
+        .wholeWrap #popup_counsel h2 {
+            margin-top: 3px;
+            font-size: 24px;
+        }
+
+        #popup_counsel #btn_close {
+            position: absolute;
+            right: 3px;
+            top: 0;
+            background: white;
+            border: none;
+            font-size: 23px;
+            cursor: pointer;
+
+
+        }
+
+        #myPetListWrap {
+            width: 410px;
+            height: 208px;
+            margin: 30px auto;
+            position: relative;
+
+        }
+
+        #btn_question button {
+            width: 410px;
+            height: 37px;
+            color: white;
+            font-size: 15px;
+            background: #2699f7;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        :focus {
+            outline: none;
+        }
+		
+		
+        #banner {
+            width: 1000px;
+            height: 150px;
+            position: relative;
+            left:50%;
+            margin-left : -500px;
+            background-color:#658cea;
+        }
+
+
+        #bannerIcon img {
+            width: 100px;
+            height: 100px;
+            float:left;
+            margin : 25px 10px 25px 50px;
+            font-weight: bold;
+            color:#fff;
+        }
+        #bannerIcon span{
+        	margin-top:30px;
+        }
+
+        #bannerText {
+            width: 300px;
+            height: 100px;
+            float:left;
+            margin : 10px;
+        }
+        
+        #bannerText span{
+        	cursor:pointer;
+        }
+        #bannerText ul{
+        	
+        	margin-top:15px;
+        	margin-bottom:35px;
+        }
+        
+
+        #bannerText > .bannerAnimalName {
+            font-size:50px;
+            font-weight: bold;
+            color:#fff;
+            margin:10px 0;
+        }
+
+        #bannerText .fas {
+            font-size:30px;
+        }
+
+        #bannerText > h3 {
+            font-size:30px;
+            color:#fff;
+        }
+
+        #bannerImg {
+            width : 180px;
+            height: 50px;
+            float:right;
+            margin : 50px 30px;
+        }
+
+        #bannerAnimalSelect {
+            width: 996px;
+            height: 190px;
+            position: absolute;
+            left:50%;
+            margin-left:-500px;
+            border: 2px solid #658cea;
+            border-radius: 5px;
+            background-color: #fff;
+            z-index: 9;
+        }
+
+        #animalIconBox {
+            width:960px;
+            height:150px;
+            margin:auto;
+        }
+
+        #animalIconBox li {
+            width: 100px;
+            height: 150px;
+            font-size:30px;
+            text-align: center;
+            float:left;
+            margin: 20px 10px;
+        }
+
+        #animalIconBox img {
+            width: 100px;
+        }
+
+        #searchBox {
+            width: 800px;
+            height: 190px;
+            margin: auto;
+            margin-top: 15px;
+            /*border-bottom:5px solid #5e5e5e;*/
+        }
+
+        #searchBox p {
+            font-size: 30px;
+            font-weight: bold;
+            margin:20px;
+            text-align:left;
+            display: block;
+        }
+
+        .searchResult {
+            font-size: 40px;
+            color: #2699f7;
+        }
+
+        #questionSubmit {
+        	top: 230px;
+        	left: 1090px;
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            bottom: 700px;
+            right: 10px;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 50%;
+            background: radial-gradient(#2699F7, #fff 67%, transparent);
+            transition: 0.4s ease-out;
+            z-index:1;
+        }
+        #questionSubmit:hover{
+            cursor: pointer;
+        }
+
+        #questionSubmit .fas {
+            font-size: 60px;
+            margin-top:25px;
+        }
+
+        #questionSubmit span {
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        #inputBox {
+            position: relative;
+            width: 800px;
+            height:50px;
+            margin: auto;
+            margin-top: 40px;
+            border: 2px solid #2699f7;
+            border-radius: 30px;
+            outline:none;
+        }
+
+        #input_searchWord {
+            width:750px;
+            height:45px;
+            margin: 0 20px;
+            border: none;
+            background-color: #fff;
+
+
+        }
+
+
+
+
+        #inputBox i:hover {
+            cursor:pointer;
+            color: #5e5e5e;
+        }
+
+        #inputBox button {
+            width: 40px;
+            height:40px;
+            text-align:center;
+
+            position: absolute;
+            font-size:20px;
+            color: #2699f7;
+            top:4px;
+            right: 10px;
+            background-color: #fff;
+            border: none;
+            outline: none;
+        }
+
+        #inputBox div{
+            float:left;
+        }
+
+
+        #periodBox {
+            width: 500px;
+            height: 50px;
+            /*border:1px solid #5e5e5e;*/
+            /*margin: 15px;*/
+            margin-left: 150px;
+        }
+
+        .period {
+            margin: 14px 0px 14px 0;
+            height: 20px;
+            line-height: 20px;
+            text-align:center;
+            float:left;
+            font-size: 17px;
+            color: #787878;
+            border-right: 1px solid #787878;
+            padding:0 20px;
+        }
+
+        #periodYear {
+            border-right: none;
+        }
+
+        #tabBox {
+            width: 800px;
+            height: 50px;
+            line-height:50px;
+            margin: auto;
+        }
+
+        #boardTab {
+            width:580px;
+            height: 50px;
+            float:left;
+        }
+
+        #boardTab li{
+            font-size:20px;
+            margin: 0 20px;
+            float:left;
+        }
+
+        #filter {
+            float:left;
+            margin-top: 10px;
+            margin-left: 58px;
+        }
+
+        #filter li {
+            width: 80px;
+            height: 20px;
+            line-height: 20px;
+            font-size:17px;
+            text-align: center;
+            margin-top: 10px;
+            float:left;
+            color: #787878;
+        }
+
+        #filter li {
+            border-right: 1px solid #787878;
+        }
+        #filter #latest{
+            border: none;
+        }
+
+        #boardTab li:hover,#filter li:hover,#periodBox li:hover {
+            color:#2699f7;
+            cursor:pointer;
+        }
+
+        #filter .filterOn, .periodOn{
+            font-weight: bold;
+            color: #2699F7;
+        }
+
+        .boardContents {
+            width:810px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        .boardBox {
+            width:390px;
+            height: 100px;
+            margin: 5px;
+            border:1px solid #5e5e5e;
+            border-radius: 8px;
+            float:left;
+        }
+
+        .labelBox {
+            width: 70px;
+            height: 100px;
+            position:relative;
+            float: left;
+        }
+
+        .labelTop {
+            width: 50px;
+            height: 5px;
+            position:absolute;
+            left:50%;
+            margin-left:-25px;
+            top:-5%;
+            background-color: #2699f7;
+            float:left;
+        }
+
+        .labelMid {
+            width:50px;
+            height:50px;
+            background-color: #2699f7;
+            margin: auto;
+            text-align: center;
+            font-size:30px;
+            color:#fff;
+        }
+
+        .labelBot {
+            width:50px;
+            height:50px;
+            border-radius: 50px;
+            position:absolute;
+            left:50%;
+            margin-left:-25px;
+            top:25%;
+            background-color: #2699f7;
+            z-index: -1;
+        }
+
+        .counsellingTitle {
+            width:300px;
+            font-size: 20px;
+            text-align: justify;
+            margin: 10px;
+            white-space: normal;
+            float: left;
+        }
+
+        .submitDate {
+            width:150px;
+            font-size: 15px;
+            margin: 10px;
+            float: left;
+        }
+
+        .views {
+            width:130px;
+            font-size: 15px;
+            text-align: right;
+            margin: 10px;
+            float: left;
+        }
+
+        .labelMid p {
+        	margin-top:10px;
+            font-size:14px;
+            color:#fff;
+        }
+
+        .labelMidTxt {
+            width:50px;
+            height:62px;
+        }
+        
+
+        .labelMidQBox {
+            line-height: 62px;
+        }
+
+        .usefulNm {
+            width:100px;
+            font-size: 15px;
+            text-align: center;
+            float: left;
+            margin: 10px 0;
+        }
+
+        .answerNm {
+            width:30px;
+            font-size: 15px;
+            text-align: right;
+            margin: 10px;
+            float: left;
+        }
+
+        .boardBox a {
+            text-decoration: none;
+            color:#000;
+        }
+
+        .boardBox:hover {
+            border: 1px solid #2699f7;
+            box-shadow: 0 0 15px 0 rgb(189, 223, 255);
+            transition: .2s ease;
+            transform: scale(1.01);
+            cursor:pointer;
+        }
+
+        #boardCompletedTapContents .likeDetailSquareBox {
+            width: 350px;
+            height: 40px;
+            font-size:15px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #f10d52;
+            color:#fff;
+            border-radius: 10px;
+            position:absolute;
+            top:-55%;
+            box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #boardCompletedTapContents .likeDetailSquareBox:after{
+            width:0px;
+            height:0px;
+            top: 100%;
+            left: 20px;
+            border: solid transparent;
+            /*transform: translate(-1px, 3px);*/
+            content: "";
+            position: absolute;
+            /*border-bottom-color: #fff;*/
+            border-left:10px solid transparent;
+            border-right:10px solid transparent;
+            border-bottom:10px solid transparent;
+            border-top:10px solid #f10d52;
+            color:#fff;
+            float:left;
+            box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #boardCompletedTapContents .likeDetail {
+            display: none;
+        }
+
+        .completedTap > #boardCompletedTapContents .labelBox:hover #boardCompletedTapContents .likeDetail {
+            display: inherit;
+        }
+
+        .completedTap > #boardCompletedTapContents .labelBox:hover #boardCompletedTapContents .labelTag > div {
+            background-color: #f10d52;
+            cursor: pointer;
+        }
+
+        #input_searchWord:focus {
+            outline:none;
+        }
+
+        #tabBox a:hover{
+            color: #2699f7 ;
+        }
+
+        #tabBox li a{
+            text-decoration: none;
+        }
+
+        #boardTapHr{
+            width:800px;
+            display: inline-block;
+            margin:auto;
+            float: left;
+        }
+
+        #tapSelection{
+            width: 110px;
+            height:4px;
+            background: rgb(38, 153, 247);
+            position: relative;
+            top: 47px;
+            left: 13px;
+        /*    첫번째 탭은 left 13px*/
+        /*    두번째 탭은 153px*/
+            transition: .2s ease;
+        }
+
+        #boardCompletedTapContents.tabOn,
+        #boardWaitingTapContents.tabOn {
+            display: block;
+        }
+
+        #boardCompletedTapContents,
+        #boardWaitingTapContents {
+            display: none;
+        }
+
+
+        #bannerText span.bannerAnimalName:hover {
+            color: #f10d52;
+            cursor: pointer;
+        }
+
+        #animalIconBox li:hover {
+            cursor:pointer;
+        }
+
+        #bannerAnimalSelect.open {
+            display: block;
+        }
+
+        #bannerAnimalSelect {
+            display: none;
+        }
+        
+        .bannerAnimalName{
+        	font-size:25px;
+        }
+        
+
+        .btn_view_more{
+            /*background-color: #2699F7;*/
+            text-align: center;
+        }
+
+        .view_more{
+            width: 800px;
+            height: 50px;
+            font-size: 20px;
+            line-height: 50px;
+            background-color: #b7deff;
+            border: 1px solid #b7deff;
+            border-radius: 10px;
+            outline: none;
+            margin-bottom: 40px;
+            /*margin: auto;*/
+        }
+        .view_more:hover{
+            font-weight: bold;
+            background-color: #6db6f3;
+            cursor: pointer;
+            transition: .1s ease;
+            transform: scale(1.03);
+        }
+

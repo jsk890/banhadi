@@ -1,0 +1,101 @@
+#logoBox {
+           width:680px;
+           height:150px;
+           margin:auto;
+           display:block;
+           position:relative;
+       }
+
+       #logoImg {
+           width: 50px;
+           position:absolute;
+           top:50%;
+           left:50%;
+           margin-left: -25px;
+        }
+
+        #loginBox {
+            width : 680px;
+            height: 360px;
+            border: 1px solid #5e5e5e;
+            margin: auto;
+        }
+
+        #searchBox {
+            display: inline-block;
+        }
+
+        #loginTextBox {
+           text-align:center;
+            margin-top:35px;
+        }
+
+        #loginBtn {
+            width: 400px;
+            height: 60px;
+            border: 1px solid #2699f7;
+            background-color:#ffffff;
+            font-size:20px;
+            color:#2699f7;
+            margin-top: 20px;
+        }
+
+        #loginBtn:hover {
+            cursor:pointer;
+            background-color:#2699f7;
+            color: #ffffff;
+        }
+
+        .inputArea {
+            width: 400px;
+            height:50px;
+            font-size: 20px;
+            margin: 10px 0 5px 0;
+        }
+
+        span {
+            width:400px;
+            color: red;
+            text-align:left;
+            display:inline-block;
+        }
+
+        li {
+           color: #5e5e5e;
+           float:left;
+        }
+
+        #search {
+            margin:auto;
+        }
+
+        .search {
+            height: 30px;
+            line-height: 30px;
+            text-align:center;
+            margin-top:20px;
+        }
+
+        #searchId {
+            width: 130px;
+            border-right: 1px solid #5e5e5e;
+        }
+
+        #searchPw {
+            width: 140px;
+            border-right: 1px solid #5e5e5e;
+        }
+
+        #searchJoin {
+            width: 130px;
+        }
+
+       #search a {
+           text-decoration: none;
+           color: #5e5e5e;
+       }
+
+       .search:hover{
+           cursor:pointer;
+           color:#2699f7;
+       }

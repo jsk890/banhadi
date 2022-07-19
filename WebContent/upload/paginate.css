@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+/*
+paginate.css
+*/
+.paginate {
+	font-size:15px;
+	text-align:center;
+	height:16px;
+	line-height:16px;
+	font-weight:500;
+	
+	
+
+}
+
+.paginate a, 
+.paginate span,
+.paginate strong{
+	color:#858585;
+	text-decoration:none;
+	padding:6px 12px;
+	border:1px solid transparent;
+	transition:.1s ease;
+}
+
+.paginate span {
+	border-color:#E1E1E1;
+	cursor: not-allowed;
+}
+
+.paginate a:hover {
+	background:#DFF2FF;
+	border-color:#E1E1E1;
+	font-weight:900;
+	color:#fff;
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.paginate strong {
+	background:#2699f7;
+	border-color:#2699f7;
+	color:#fff;
+	cursor: not-allowed;
+	font-weight:900;
+}
+
+.paginate span.next,
+.paginate span.prev {
+	border-color:#E1E1E1;
+	color:#E1E1E1;
+	cursor:default;
+	cursor:not-allowed;
+} 
+.paginate .screen_out {
+	padding:0;
+	border:none;
+}

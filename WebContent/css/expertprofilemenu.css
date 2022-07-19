@@ -1,0 +1,475 @@
+#masterProfile{
+    width: 1000px;
+    height: 490px;
+    background: white;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+#wholeContent{
+    width: 1029px;
+    margin: auto;
+}
+#masterProfileTap ul{
+    margin-left: 15px;
+}
+#masterProfileTap li{
+    display: inline-block;
+    font-size: 18px;
+    color: rgb(127, 127, 127);
+    margin-right: 80px;
+    margin-bottom: 8px;
+}
+
+#masterProfileTap a:hover{
+    color: #2699f7 ;
+
+}
+#masterProfileTap li a{
+    text-decoration: none;
+}
+#masterProfileTapHr{
+    position: relative;
+    left: 0;
+}
+
+#tapSelection{
+    width: 65px;
+    height:4px;
+    background: rgb(38, 153, 247);
+    position: relative;
+    top: -13px;
+    left: 13px;
+    /*    첫번째 탭은 left 13px*/
+    /*    두번째 탭은 158px*/
+    /*    세번쨰 탭은 288px*/
+    transition: .2s ease;
+}
+#answerContentWrap{
+    width:820px;
+    display:none;
+
+}
+.answerContent{
+    border: 1px solid;
+    border-color: rgb(204, 204, 204);
+    width: 820px;
+    height: 366px;
+
+    margin-bottom: 20px;
+}
+.answerContent .categoryIcon{
+    width: 80px;
+    height: 80px;
+    background: rgb(223, 242, 255);
+    border-radius: 4px;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.answerContent img{
+    width: 70px;
+    margin-top: 5px;
+    margin-left: 5px;
+
+
+
+}
+.answerContent .list {
+    width: 690px;
+    height: 351px;
+    position: relative;
+    left: 130px;
+    top: 15px;
+
+}
+.answerContent .list  .title{
+    margin-left: -25px;
+    font-size: 20px;
+    font-weight: 400;
+}
+.answerContent .list  .Time{
+    font-size:12px;
+    font-weight: 200;
+    margin-top :5px;
+}
+.answerContent .list .myAnswer{
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+.answerContent .list  .ansTime{
+    position: absolute;
+    bottom:15px;
+
+}
+
+.answerContent .list .answerList{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+
+}
+
+.answerList img{
+    width: 26px;
+    height: 26px;
+}
+
+.answerList a {
+    text-decoration: none;
+}
+
+
+.alignType{
+    position:relative;
+    padding: 5px;
+    top: -5px;
+    left:720px;
+
+}
+#paginate{
+    margin-bottom: 80px;
+    width: 820px;
+}
+#paginate ul {
+    list-style:none;
+    display: block;
+    margin: auto;
+
+}
+#paginate ul li {
+    display: inline-block;
+
+}
+
+#replyContentWrap{
+    width:820px;
+    display: none;
+
+}
+
+.replyContent {
+    width: 800px;
+    height: 70px;
+    border: 1px solid;
+    border-color: rgb(204, 204, 204);
+    position: relative;
+    left: 30px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+
+}
+.replyContent  .title{
+    font-size: 20px;
+    font-weight: 400;
+    float: left;
+    margin-right: 50px;
+}
+.replyContent  .Time{
+    font-size:12px;
+    font-weight: 200;
+    margin-top :5px;
+}
+.replyContent  .replyIcon{
+    float: left;
+    position: absolute;
+    left: 45px;
+    top: 45px;
+    width: 40px;
+    height: 40px;
+
+}
+.replyContent img{
+    width: 40px;
+    height: 40px;
+}
+.replyContent .myReply{
+    font-size: 18px;
+    font-weight: 300;
+    background: #DFF2FF;
+    float: left;
+    position: relative;
+    left: 70px;
+    top: -20px;
+    margin: 35px 50px;
+    margin-left: 0;
+}
+.replyContent  .ansTime{
+    position: relative;
+    left: 40px;
+    top: 20px;
+
+}
+
+#levelContentWrap{
+    width: 1029px;
+    margin: auto;
+    display: none;
+}
+#achievementList{
+    margin: 20px auto;
+    width: 823px;
+    height: 275px;
+    border: 1px solid;
+    border-color: rgb(204, 204, 204);
+
+}
+#levelDetailWrap {
+    margin: 20px auto;
+    width: 682px;
+    height: 786px;
+}
+#writeBtn{
+    width: 1029px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+#writeBtn button{
+    display: block;
+    margin:auto;
+    color: #2699f7;
+    border-color: #2699f7;
+    border:1px solid;
+    border-radius: 4px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;;
+    background: white;
+}
+#achiveNum{
+
+    width: 270px;
+    height: 265px;
+    border: none;
+    float: left;
+    position: relative;
+    left: 15px;
+    top: 15px;
+
+
+}
+#achiveNum dl{
+    width: 280px;
+    height: 220px;
+
+}
+#achiveNum dl span{
+    font-size: 22px;
+    font-weight: 400;
+}
+#achiveNum dl dt{
+    margin-top: 20px;
+    margin-bottom:10px;
+}
+#achiveNum dl dd{
+    position: relative;
+    left: 150px;
+    color :#2699f7;
+
+
+}
+#achiveResult,#levelResult{
+
+    width: 528px;
+    height: 140px;
+    border: none;
+    position: relative;
+    left: 295px;
+    line-height: 130px;
+
+
+}
+#achiveResult dl{
+
+    height: 140px;
+}
+#achiveResult dt{
+    position: absolute;
+    left: 180px;
+    font-size: 22px;
+}
+#achiveResult dl dd{
+    position: absolute;
+    right: 120px;
+    top: 0;
+    font-size: 40px;
+
+    line-height: 200px;
+}
+
+#levelResult{
+
+    height: 135px;
+    line-height: 130px;
+    background:  #2699f7;
+
+
+}
+#levelResult h1{
+    position: absolute;
+    left: 150px;
+    color: white;
+    font-size: 25px;
+
+}
+#levelResult span{
+    font-size: 35px;
+}
+
+#levelResult img{
+    width: 80px;
+    height: 90px;
+    margin-top: 15px;
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+}
+
+#levelDetailWrap .levelDetail{
+
+    width: 341px;
+    height: 157px;
+
+
+}
+.levelDetail img {
+    width: 115px;
+    height: 135px;
+    margin-top: 5px;
+    margin-left: 20px;
+    float: left;
+}
+.levelDetail dl{
+    position: relative;
+    left: 20px ;
+    top: 30px;
+}
+.levelDetail dt{
+
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+.levelDetail dd{
+    margin-bottom: 10px;
+}
+
+#levelTitle h2,h3{
+    color: rgb(94, 94, 94);
+    position: relative;
+    left: 40px;
+    top: 20px;
+    margin-bottom: 15px;
+}
+#levelBronze{
+    display: inline-block;
+    background:#DFF2FF;
+}
+.nextLevel{
+    width: 341px;
+    height: 785px;
+    border:1px solid #fff;
+    position: relative;
+    left: 341px;
+    background: orange;
+
+}
+.nextLevel h2{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    font-size: 30px;
+    color: rgb(94, 94, 94);
+}
+.nextLevel .secondLine{
+    top: 70px;
+}
+.nextLevel .thirdLine{
+    top: 110px;
+}
+#medalList{
+
+    width: 341px;
+    height: 786px;
+    float: left;
+
+}
+.nextLevelDetail{
+    width: 310px;
+    height: 100px;
+    background: white;
+    position: relative;
+    margin: 50px auto;
+    top: 120px;
+
+}
+.nextLevelDetail .far{
+    position: absolute;
+    color: #2699f7 ;
+    font-size:80px;
+    right: 210px;
+    top: 10px;
+}
+.nextLevelDetail .fa-bookmark{
+    right: 220px;
+}
+.nextLevelDetail .condition{
+    position: absolute;
+    font-size: 23px;
+    width: 109px;
+    height: 70px;
+    left: 105px;
+    top: 23px;
+    display: inline-block;
+}
+.nextLevelDetail .conditionNum{
+    position: absolute;
+    font-size: 50px;
+    width: 80px;
+    height: 80px;
+    right: 10px;
+    top: 23px;
+    color:#2699f7 ;
+
+}
+#levelDetailWrap .fas{
+    position: absolute;
+    font-size: 40px;
+    right: 160px;
+}
+#firstPlus .fas{
+    top: 275px;
+}
+#secondPlus .fas{
+    top: 423px;
+}
+#lastArrow .fas{
+    top: 575px;
+    font-size: 50px;
+    right: 163px;
+}
+#acquisition{
+    width: 310px;
+    height: 138px;
+    font-size: 40px;
+    position: relative;
+    top: -150px;
+    left: 90px;
+    line-height: 138px;
+}
+#acquisition img{
+    width: 119px;
+    height: 123px;
+
+}
+
+#answerContentWrap.on,
+#replyContentWrap.on,
+#levelContentWrap.on{
+    display: block;
+}

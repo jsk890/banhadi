@@ -1,0 +1,10 @@
+[
+  {"no":1 ,"image": "img/hospital.jpg"},
+  {"no": 2, "image": "img/hospital1.jfif"},
+  {"no": 3, "image": "img/hospital2.jfif"},
+  {"no": 4, "image": "img/hospital3.jfif"},
+  {"no": 5, "image": "img/hospital4.jfif"},
+  {"no": 6, "image": "img/hospital5.jfif"},
+  {"no":7 ,"image": "img/hospital.jpg"},
+  {"no":8, "image": "img/hospital1.jfif"}
+]

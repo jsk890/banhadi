@@ -1,0 +1,570 @@
+.profileBox{
+    /*박스를 부모 기준으로 고정시킵니다*/
+
+    /*박스의 크기를 지정된 설정값으로 세팅합니다*/
+
+    height: 490px;
+    /*브라우저 크기에 따라 중앙정렬이 되도록 합니다*/
+
+    margin: auto;
+    margin-top: 50px;
+    /*테두리 설정입니다*/
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+/*프로필 설정 버튼입니다*/
+.profile_setting_mark{
+    position: absolute;
+    width: 10px;
+    right: 10px;
+
+    font-weight: bold;
+    font-size: 30px;
+    /*background-color: #5e5e5e;*/
+}
+.setting_checkbox input{
+    display: none;
+}
+
+.profile_setting{
+    position: absolute;
+    overflow: hidden;
+    display: none;
+    top: 60px;
+    right: 380px;
+    width: 115px;
+    height: 85px;
+    background-color: #ff6f7f;
+}
+.popup_setting{
+    position: absolute;
+    border: 1px solid #2699F7;
+    border-radius: 10px;
+    background-color: #fff;
+    top:-85px;
+}
+.profile_setting_mark input:checked+.profile_setting .popup_setting_box{
+    animation: slidedown .2s ease;
+    animation-fill-mode: both;
+}
+@keyframes slidedown {
+    0%{top:-85px}
+    100%{top:0}
+}
+
+.popup_setting_box{
+    position: relative;
+    width: 100px;
+    height: 60px;
+    text-align: right;
+    margin: 10px 5px;
+    /*display: none;*/
+    /*background-color: #bbbbbb;*/
+}
+.popup_setting_box span{
+    float: right;
+    display: block;
+    margin-top: 10px;
+}
+.profile_setting_mark:hover{
+    cursor: pointer;
+}
+
+/*.profile_setting_mark:active+.popup_setting{*/
+/*    display: block;*/
+/*}*/
+.popup_setting span a{
+    text-decoration: none;
+}
+
+
+/*프로필과 경력사항이 포함된 필드입니다*/
+.profile{
+
+    float: left;
+    margin: 20px 0 40px 30px;
+    width: 600px;
+    height: 450px;
+    background-color: #bee1fd;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+/*뱃지 필드 입니다*/
+.badgeBox{
+    float: right;
+    margin: 20px 30px 0 10px;
+    width: 320px;
+    height: 450px;
+    border: 1px solid #b7deff;
+    border-radius: 10px;
+}
+/*프로필 머릿말 필드입니다*/
+.profile_prefaceBox{
+    position: relative;
+    width: 600px;
+    height: 50px;
+    /*background-color: #1565C0;*/
+}
+/*머릿말 영역입니다*/
+.preface{
+    position: relative;
+    width: 350px;
+    height: 50px;
+    top: 10px;
+    display: inline-block;
+    background-color: #2699F7;
+    border-radius: 10px;
+}
+/*머릿말 영역 꼬리입니다*/
+.preface::before{
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: 80px;
+    border-top: 15px solid #2699F7;
+    border-left: 10px solid transparent;
+}
+/*머릿말 영역 꼬리입니다*/
+.preface::after{
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: 90px;
+    border-top: 15px solid #2699F7;
+    border-right: 10px solid transparent;
+}
+/*머릿말 영역 글자를 담는 영역입니다*/
+.preface h2{
+    line-height: 50px;
+}
+/*머릿말 영역 글자입니다*/
+.preface a{
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+/*머릿말 영역 글자 호버입니다*/
+.preface a:hover{
+    font-weight: bold;
+}
+/*머릿말 영역 글자 호버시 아이콘 표시입니다*/
+.preface a:hover:after{
+    content :"\2710";
+    position: absolute;
+    font-size: 25px;
+    transform: rotate(180deg);
+}
+/*사진과 등급 이름이 나오는 영역입니다*/
+.profile_detail{
+    float: left;
+    width: 300px;
+}
+/*커리어 영역입니다*/
+.profile_career{
+    float: left;
+    width: 250px;
+    height: 330px;
+    /*background-color: #858585;*/
+}
+/*프로필 이미지 영역입니다*/
+.img_profile{
+    float: left;
+    margin-top: 30px;
+    margin-left: 35px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+/*등급과 상세정보가 표시되는 영역입니다*/
+.profile_grade_info{
+    float: left;
+    top: 30px;
+    width: 100%;
+}
+/*등급이 표시되는 영역입니다*/
+.grade{
+    float: left;
+    margin-left: 40px;
+    width: 80px;
+    height: 100px;
+    background-color: #ffe6e6;
+}
+/*등급 이미지입니다*/
+.grade_img{
+    position: relative;
+    width: 80px;
+    height: 100px;
+}
+/*상세정보 영역입니다*/
+.doctor_info{
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 150px;
+    float: left;
+    text-align: left;
+    /*background-color: #ff6f7f;*/
+}
+/*상세 이름영역*/
+.doctor_info .profile_name{
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+/*상세 이름 직업 영역*/
+.doctor_info .job{
+    font-size: 13px;
+}
+/*상세 기간계산 영역*/
+.doctor_info .period_cal{
+    margin-bottom: 5px;
+}
+.doctor_info .img_hospital{
+    background-color: #ff6f7f;
+    float: left;
+    margin-right: 5px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+.doctor_info .hospital_name{
+    margin-top: 5px;
+    padding-top: 5px;
+    font-weight: bold;
+    font-size: 19px;
+}
+/*상세 전화번호 영역*/
+.doctor_info .phone_num a:hover{
+    font-weight: bold;
+    /*background-color: #bbbbbb;*/
+}
+.doctor_info a{
+    text-decoration: none;
+    color: #000;
+    /*background-color: cornsilk;*/
+}
+/*상세 전화번호 영역 호버시 아이콘 표시입니다*/
+.doctor_info .phone_num a:hover:after{
+    content :"\2710";
+    position: absolute;
+    font-size: 20px;
+    transform: rotate(180deg);
+}
+/*경력사항 제목입니다*/
+.career_title{
+    float: left;
+    height: 30px;
+    margin-top: 15px;
+    line-height: 30px;
+    text-align: left;
+    /*background-color: #5e5e5e;*/
+    width: 100px;
+    font-weight: 700;
+}
+/*경력사항 리스트*/
+.career_list {
+    float: left;
+    height: 330px;
+    text-align: left;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+/*경력사항 스크롤바 UI*/
+.career_list::-webkit-scrollbar{
+    width: 8px;
+    height: 330px;
+}
+.career_list::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #e0edff;
+}
+.career_list::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #6db6f3;
+}
+/*경력사항 리스트 호버시 마이너스 표시*/
+.career_list .career_detail:hover:before{
+    content :"\2212";
+    float: right;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    line-height: 15px;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    background-color: #ff6f7f;
+    animation: btn_delete_shaking .8s linear infinite;
+}
+/*마이너스 표시 딸랑이*/
+@keyframes btn_delete_shaking {
+    0%{transform: rotate(0deg)}
+    8%{transform: rotate(-15deg)}
+    16%{transform: rotate(15deg)}
+    24%{transform: rotate(-10deg)}
+    32%{transform: rotate(10deg)}
+    40%{transform: rotate(-5deg)}
+    48%{transform: rotate(5deg)}
+    56%{transform: rotate(0deg)}
+}
+/*커리어 리스트 플러스 영역*/
+.btn_career_list_plus{
+    float: left;
+    margin-top: 15px;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    background-color: #96cbff;
+    font-size: 15px;
+}
+/*커리어 플러스버튼 호버시*/
+.btn_career_list_plus:hover{
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #2699F7;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(100, 181, 246, 0.12);
+}
+/*경력사항 인풋 영역*/
+.career_input_area{
+    text-align: left;
+    margin-top: 45px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(100, 181, 246, 0.12);
+    display: none;
+}
+/*경력사항 인풋영역 생성*/
+.career_input_area.on {
+    display: block;
+}
+/*인풋박스 설정*/
+.select{
+    height: 24px;
+    margin: 5px;
+}
+.input, .select{
+    height: 24px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+.select_start_year{
+    width: 80px;
+}
+.select_end_year{
+    width: 80px;
+}
+.input_place{
+    width: 230px;
+}
+/*뱃지 제목영역*/
+.badge_total_count {
+    height: 30px;
+    margin: 25px 15px;
+    line-height: 30px;
+    text-align: left;
+    /*background-color: #5e5e5e;*/
+    width: 100px;
+    font-weight: 700;
+}
+/*뱃지 전체보기 버튼입니다*/
+.popup_badge_total_btn
+{
+    position: absolute;
+    right:50px;
+    top:50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    /*background-color: #ff6f7f;*/
+}
+.popup_badge_total_btn:hover
+{
+    cursor: pointer;
+}
+/*뱃지 팝업*/
+.popup_badge_total_bg.on, .popup_badge_total.on{
+    display: block;
+}
+.badge_list_title{
+    position: absolute;
+    margin: 20px;
+    font-weight: 700;
+    font-size: 20px;
+}
+.badge_list_subtitle{
+    margin: 5px 0;
+    font-weight: 300;
+    font-size: 13px;
+}
+.popup_badge_total_bg{
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,.5);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.popup_badge_total{
+    position: absolute;
+    display: none;
+    /*margin: auto;*/
+    left: 50%;
+    margin-left: -280px;
+    width: 560px;
+    height: 650px;
+    border-radius: 10px;
+    background-color: #b7deff;
+    z-index: 3;
+}
+.badge_total_content{
+    position: relative;
+    margin: auto;
+    top: 80px;
+    width: 520px;
+    height: 550px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.badge_detail{
+    float: left;
+    /*top: 25px;*/
+    /*background-color: #ff6f7f;*/
+    width: 150px;
+    height: 190px;
+    margin: 10px;
+    text-align: center;
+
+}
+.img_popupBadge{
+    height: 150px;
+    /*margin: 10px 5px;*/
+    /*background-color: #b7deff;*/
+}
+.badge_description{
+    font-size: 13px;
+}
+/*뱃지 팝업 상 스크롤바 UI*/
+.badge_total_content::-webkit-scrollbar{
+    width: 8px;
+    height: 330px;
+}
+.badge_total_content::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #e0edff;
+}
+.badge_total_content::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #6db6f3;
+}
+/*뱃지 리스트가 표시될 영역*/
+.badge_list{
+    width: 300px;
+    margin: auto;
+    margin-top: 40px;
+    background-color: #b7deff;
+
+}
+/*뱃지 이미지 나열*/
+.badge_img{
+    float: left;
+    margin: 10px 5px;
+    width: 90px;
+    height: 90px;
+    /*background-color: #5ab6ff;*/
+}
+/*커리어 리스트의 한칸 영역입니다.*/
+.career_detailBox{
+    position: relative;
+    width: 250px;
+    margin-bottom: 10px;
+}
+/*커리어 리스트의 마크 표시 영역입니다.*/
+.career_detail_mark{
+    position: relative;
+    width: 40px;
+    height: 50px;
+    line-height: 50px;
+    color: #69baff;
+}
+/*커리어 리스트 첫번째 자식의 마크에 애니메이션 효과를 줍니다*/
+.career_list .circle{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 12px;
+    animation: bright 1.2s ease infinite ;
+    color: #2699F7;
+}
+.wave{
+    position: absolute;
+    width: 100%;
+    line-height: 50px;
+    text-align: center;
+    animation: wave 1.2s ease infinite ;
+}
+.wave_second{
+    position: absolute;
+    width: 100%;
+    line-height: 50px;
+    text-align: center;
+    animation: wave_second 1.2s ease infinite ;
+}
+@keyframes bright {
+    0%{opacity: 0.3}
+    20%{opacity: 1}
+    100%{opacity: 0}
+}
+@keyframes wave {
+    0%{opacity: 1}
+    100%{opacity: 0; transform: scale(2.2)}
+}
+@keyframes wave_second {
+    10%{opacity: 0; transform: scale(0.3)}
+    25%{opacity: .8; transform: scale(.9)}
+    100%{opacity: 0; transform: scale(1.8)}
+}
+/*커리어 리스트의 두번째 자식부터는 마크의 애니메이션 효과를 없앱니다.*/
+.career_list ul li:nth-of-type(n+2) .circle{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    animation: none;
+    color: #ffffff;
+}
+.career_list ul li:nth-of-type(n+2) .wave,  .career_list ul li:nth-of-type(n+2) .wave_second{
+    display: none;
+}
+/*커리어 리스트의 상세 표시 구역입니다.*/
+.career_detail{
+    position: absolute;
+    top: -1px;
+    margin-top: 1px;
+    padding-left: 4px;
+    left: 40px;
+    width: 200px;
+    line-height: 25px;
+    border-radius: 10px;
+}
+.career_detail:hover{
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.period{
+    width: 200px;
+    height: 25px;
+}
+.place{
+    width: 200px;
+    height: 25px;
+    font-size: 13px;
+}
+

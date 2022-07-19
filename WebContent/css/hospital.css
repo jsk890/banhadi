@@ -1,0 +1,1481 @@
+#hospitalInformWrap h2,#hospitalInformWrap h3{
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 40px;
+    /*display: inline-block;*/
+}
+#hospitalInformWrap h3{
+    margin: 15px 0;
+    display: inline-block;
+}
+#calendar {
+    max-width: 500px;
+}
+.content_area{
+    /*position: relative;*/
+    display: block;
+    /*border: 1px solid bisque;*/
+}
+#map{
+    position: relative;
+    left: 50%;
+    margin-left: -250px;
+    width: 500px;
+    height: 500px;
+}
+.input_area{
+    display: none;
+}
+.input_area.on{
+    display: inline-block;
+}
+.input_area .day_of_the_week{
+    width: 80px;
+}
+.input_area select{
+    width: 50px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+/*보유장비 네비게이션 박스*/
+.nav_contentBox{
+    position: relative;
+    clear: both;
+    height: 30px;
+}
+.equipment_tap_hr{
+    position: relative;
+    top: -3px;
+}
+/*보유장비 네비게이션 탭 리스트*/
+.equipment_tap li {
+    float: left;
+    position: relative;
+    left: 34px;
+    cursor: pointer;
+    z-index: 1;
+}
+/*보유장비 네비게이션 탭이 클릭 됐을때*/
+.equipment_tap li.on {
+    border-bottom: 4px solid #2699F7 ;
+}
+/*탭 a링크*/
+.equipment_tap li a{
+    width: 100px;
+    height: 25px;
+    display: block;
+    margin:0 2px 0 2px;
+    text-align: center;
+    line-height: 25px;
+    color: #424242;
+    text-decoration: none;
+}
+/*보유장비 영역*/
+.equipment.content_area{
+    /*background-color: #5e5e5e;*/
+    height: 490px;
+}
+
+/*탭을 눌렀을때 컨텐트에 내용이 들어가는 곳*/
+.equipment_tap_contents {
+    margin-top: 10px;
+    float: left;
+    width: 720px;
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 0;
+    padding-left: 10px;
+    height: 370px;
+}
+/*컨텐트 들의 스크롤 설정*/
+.equipment_tap_contents::-webkit-scrollbar{
+    width: 8px;
+}
+.equipment_tap_contents::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #e0edff;
+}
+.equipment_tap_contents::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #6db6f3;
+}
+.career_list::-webkit-scrollbar{
+    width: 8px;
+}
+.career_list::-webkit-scrollbar-track{
+    border-radius: 8px;
+    background-color: #e0edff;
+}
+.career_list::-webkit-scrollbar-thumb{
+    border-radius: 8px;
+    background-color: #6db6f3;
+}
+
+/*탭영역을 클릭했을 때, 장비사진에 마우스를 올렸을 때*/
+.equipment_tap_contents .tab, .equipment_description_area_kor .hover,.delete_opening_time{
+    position: relative;
+    display: none;
+}
+.equipment_tap_contents .tab.on, .equipment_description_area_kor .hover.hoverOn{
+    display: block;
+}
+
+/*장비사진과 이름이 들어가는 곳*/
+.equipment_box{
+    float: left;
+    width: 190px;
+    height: 200px;
+    transition: ease;
+    border-radius: 10px;
+    pointer-events: none;
+}
+.equipment_box.on{
+    pointer-events: painted;
+}
+.equipment_box * {
+    cursor: pointer;
+}
+/*장비 사진이 들어가는 곳*/
+.equipment_tap_contents .equipment_img{
+    /*position: relative;*/
+    width: 180px;
+    /*left: 5px;*/
+    margin : 5px;
+    border-radius: 5px;
+
+}
+/*장비 사진 위에 마우스를 올렸을 때*/
+.equipment_box:hover{
+    top: 15px;
+    z-index: 1;
+    animation: image_scale_up .1s linear;
+    animation-fill-mode: both;
+}
+@keyframes image_scale_up {
+    0%{transform: scale(1)}
+    100%{transform: scale(1.03)}
+}
+
+/*장비를 클릭하고 담는 공간*/
+.equipment_basket{
+    position: relative;
+    height: 50px;
+    border-radius: 10px;
+    padding: 5px 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: none;
+    animation: basket_appear_down .7s ease;
+    animation-fill-mode: both;
+    background-color: #b7deff;
+}
+.equipment_basket li{
+    margin-bottom: 5px;
+    font-size: 13px;
+    float: left;
+}
+/*장비 바스켓의 리스트의 엑스표시*/
+.equipment_basket .far.fa-times-circle{
+    color: #ff6f7f;
+}
+.equipment_basket .far.fa-times-circle:hover{
+    font-weight: bold;
+    cursor: pointer;
+}
+@keyframes basket_appear_down {
+    0%{top:-25px;opacity:0;}
+    100%{top:-10px;opacity: 1;}
+}
+.basket_list{
+    margin-right: 10px;
+}
+.equipment_name{
+    margin: 2px 5px;
+}
+#availableList {
+    width: 1080px;
+    overflow: hidden;
+}
+#availableList li {
+    float: left;
+    height: 80px;
+    width: 100px;
+    margin: 10px;
+}
+/*장비 영어 설명*/
+.equipment_description_eng{
+    margin-left: 5px;
+    /*padding: 5px;*/
+    color: #2699F7;
+    size: 6px;
+
+}
+/*장비 한글 상세설명 구역*/
+.equipment_description_area_kor{
+    margin-top: 10px;
+    float: right;
+    overflow: auto;
+    margin-left: 20px;
+    width: 260px;
+    height: 370px;
+    border: 1px solid #b7deff;
+    border-radius: 10px;
+    padding: 10px;
+}
+.equipment_description_area_kor p{
+    float: left;
+}
+/*스태프의 리스트가 담기는 공간*/
+.medical_staff_content{
+    position: relative;
+    left: 50%;
+    margin-left: -500px;
+    width: 1000px;
+}
+/*스태프들의 개별 리스트*/
+.staff_list .staff_list_box{
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 970px;
+    /*height: 350px;*/
+    /*border: 1px solid red;*/
+    margin-bottom: 20px;
+    /*background-color: #b7deff;*/
+}
+/*사진영역 경력사항영역 포함 부분*/
+.doctor_info{
+    margin-left: 10px;
+    /*display: inline-block;*/
+    /*position: relative;*/
+    float: left;
+    width: 250px;
+    height: 300px;
+    margin-top: 15px;
+    text-align: center;
+    /*background-color: #6db6f3;*/
+}
+/*전문가 사진*/
+.doctor_info .img_profile{
+    width: 200px;
+    /*position: relative;*/
+    /*float: left;*/
+    margin-top: 10px;
+    /*background-color: #bbbbbb;*/
+}
+/*경력사항 영역*/
+.career_list{
+    /*display: inline-block;*/
+    float: left;
+    margin: 15px;
+    width: 550px;
+    border-left: 2px dotted #2699F7;
+}
+.career_list li{
+    position: relative;
+    margin: 20px 30px;
+}
+/*경력사항 제목*/
+.career_list .career_title{
+    font-size: 18px;
+    font-weight: bold;
+    margin:10px;
+}
+/*전문가 이름*/
+.doctor_info .profile_name{
+    font-size: 25px;
+}
+/*전문가 직업*/
+.doctor_info .job{
+    font-size: 15px;
+}
+/*전문가 직책*/
+.doctor_info .job_position{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+/*경력사항 리스트 상세 내용*/
+.career_list li{
+    margin-bottom: 30px;
+}
+
+
+.opening_hours_input_area{
+    /*width: 500px;*/
+    display: flex;
+    /*background-color: #69baff;*/
+}
+.btn_opening_time_add{
+    margin: 10px;
+    width: 120px;
+    height: 30px;
+    border: 0;
+    background-color: #96cbff;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+}
+.btn_opening_time_add:hover{
+    background-color: #2699F7;
+    font-weight: bold;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(100, 181, 246, 0.12);
+}
+.opening_hours_input_area .input_area{
+    margin-left: 10px;
+    margin-top: 13px;
+}
+
+.opening_time_detail ul:hover li .delete_opening_time{
+    display: inline-block;
+    font-size: 14px;
+    margin-top: -2px;
+    /*margin-left: 5px;*/
+    position: absolute;
+    text-align: center;
+    background-color: #ff6f7f;
+    width: 40px;
+    border-radius: 10px;
+    animation: appear .2s ease;
+    animation-fill-mode: both;
+}
+@keyframes appear {
+    0%{margin-left: 0px; opacity: 0}
+    100%{margin-left: 5px; opacity: 1}
+}
+
+.opening_time_detail ul{
+    width: 250px;
+    cursor: pointer;
+    display: inline-block;
+}
+.opening_time_detail ul li{
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-left: 10px;
+
+}
+
+.check_box{
+    display: none;
+}
+
+
+.available_animals {
+    margin: 10px 0;
+}
+
+
+
+
+.available_animals_list img{
+    width: 50px;
+    height: 50px;
+    /*background-color: #b7deff;;*/
+}
+
+
+
+.facility_service{
+    height: 150px;
+    font-size: 25px;
+    /*background-color: #ff6f7f;*/
+}
+.facility_service .fas{
+    color: #b7deff;
+    font-size: 25px;
+    margin-top: 20px;
+
+}
+.facility_service label{
+    cursor: pointer;
+    margin-right: 20px;
+
+}
+/*.facility_service ul input{*/
+/*    display: none;*/
+/*}*/
+
+
+
+
+
+.available_booking{
+    display: inline-block;
+    height: 500px;
+}
+.pick_date_area{
+    float: left;
+    overflow: hidden;
+}
+
+.pick_date_area .tui-datepicker{
+    float: left;
+    position: relative;
+    border: none;
+}
+
+
+
+/*예약가능시간 설정 선택 패드*/
+.time_pad{
+    float: left;
+    margin: 40px 20px;
+}
+/*패드 제목*/
+.time_pad p{
+    margin-bottom: 20px;
+}
+/*시간선택 라벨 호버시*/
+.time_pad li label:hover{
+    cursor: pointer;
+}
+/*오전시간 패드*/
+.morning_time_pad{
+    width: 300px;
+    /*height: 200px;*/
+    float: left;
+    overflow: hidden;
+    /*background-color: #ff6f7f;*/
+}
+/*오후시간 패드*/
+.afternoon_time_pad{
+    width: 300px;
+    /*height: 200px;*/
+    float: left;
+    overflow: hidden;
+    /*background-color: #bbbbbb;*/
+}
+/*패드 안 버튼 설정*/
+.morning_time, .afternoon_time{
+    float: left;
+    text-align: center;
+    line-height: 35px;
+    width: 60px;
+    height: 35px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    background-color: #ccc;
+
+    border-radius: 10px;
+    color: #9e9e9e;
+    display: block;
+}
+.morning_time label, .afternoon_time label{
+    display: block;
+    width: 60px;
+    height: 35px;
+
+
+    border-radius: 10px;
+    color: #9e9e9e;
+}
+.time_pad .on {
+    background-color: #2699F7;
+    color: #fff;
+}
+#content {
+    width: 1050px;
+}
+
+#hospitalIntro {
+    width: 1050px;
+    height: 320px;
+}
+
+#abstractInform {
+    width: 1050px;
+    height: 50px;
+}
+
+#abstractInform div {
+    display: inline-block;
+    position: relative;
+    bottom: 10px;
+}
+
+#abstractInform #treeScore {
+    left: 20px;
+}
+
+#abstractInform #hospitalAddress {
+    left: 80px;
+}
+
+#abstractInform #hospitalPhoneNum {
+    left: 130px;
+}
+
+#abstractInform .fas {
+    color: #2699f7;
+    margin-right: 10px;
+}
+
+#abstractInform img {
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
+
+}
+
+#representImage {
+    width: 1050px;
+    height: 225px;
+    margin-bottom: 40px;
+}
+
+
+#treeScoreWrap {
+    width: 200px;
+    height: 225px;
+    float: left;
+    text-align: center;
+}
+
+#toggleWrap {
+    width: 200px;
+    height: 225px;
+    float: right;
+    text-align: center;
+}
+
+#hospitalName {
+    font-size: 40px;
+    margin-top: 50px;
+    border: none;
+
+
+}
+
+
+:focus {
+    outline: none;
+}
+
+
+#representImage .myLabel {
+    float: left;
+    width: 250px;
+    height: 160px;
+    background: rgb(224, 224, 224);
+    border: none;
+    margin: 30px 40px;
+    margin-right: 70px;
+    font-size: 75px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 160px;
+
+}
+#representImage input {
+    display: none;
+}
+#fileInputWrap{
+    position: relative;
+    width: 320px;
+}
+.btn_mainImageDelete {
+    background: #a2a2a2;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: 200;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: none;
+
+
+
+}
+
+.btn_mainImageDelete:hover {
+    background: #424242;
+}
+
+
+
+.radarChartWrap {
+    width: 270px;
+    height: 225px;
+    float: left;
+
+}
+
+#chart {
+    position: relative;
+    top: -20px;
+
+}
+#treeScoreWrap .tree{
+
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 20px auto;
+
+}
+.bigTreeScore {
+    font-size: 20px;
+    margin: -10px auto;
+
+}
+#representImage img {
+    width: 150px;
+    height: 150px;
+    /* display: block;*/
+    margin: 20px auto;
+}
+
+#todayEmergency {
+    margin-top: 80px;
+}
+
+#toggleBtn {
+    margin: 20px auto;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    vertical-align: middle;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    display: none;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.scroll-menu {
+    height: 60px;
+    line-height: 60px;
+    background: white;
+    z-index: 99;
+
+}
+
+.scroll-content {
+
+    min-height: 100px;
+}
+
+.scroll-fixed {
+    position: fixed;
+    top: 0;
+
+}
+#hospitalProfileTap {
+    height: 53px;
+	text-align: center;
+	background-color: #424242;
+}
+
+#hospitalProfileTap ul {
+    height: 53px;
+    /*margin-left: 30px;*/
+    overflow: hidden;
+	width:1100px;
+	margin:auto;
+    background: #bef6ff;
+
+}
+
+#hospitalProfileTap li {
+    float: left;
+    /*display: inline-block;*/
+    font-size: 18px;
+    color: rgb(127, 127, 127);
+    margin-right: 80px;
+
+}
+
+#hospitalProfileTap a:hover {
+    color: #2699f7;
+}
+
+#hospitalProfileTap li a {
+    text-align: center;
+    display: block;
+    width: 80px;
+    color: #000;
+    text-decoration: none;
+}
+
+#hospitalProfileTapHr {
+    position: relative;
+    left: 0;
+    top: -9px;
+}
+
+#tapSelection {
+    width: 80px;
+    height: 4px;
+    background: rgb(38, 153, 247);
+    position: relative;
+    top: -23px;
+    left: 0;
+    /*    첫번째 탭은 left 13px*/
+    /*    두번째 탭은 148px*/
+    /*    세번쨰 탭은 282px*/
+    /*    4번째 탭은 414px*/
+    /*    5번째 탭은 564px*/
+    transition: .2s ease;
+}
+
+.scroll_wrap {
+    width: 1040px;
+    min-height: 340px;
+    margin: 25px auto;
+
+}
+
+
+.scroll_wrap h2 {
+    font-size: 24px;
+}
+
+
+#photoAddListWrap.scroll_wrap {
+    height: 340px;
+    width: 1030px;
+    padding-left: 5px;
+    position: relative;
+    padding-bottom: 0;
+
+}
+
+#photoAddListWrap div {
+    display: inline-block;
+}
+
+#photoAddListWrap .myLabel {
+    float: left;
+    width: 150px;
+    height: 150px;
+    background: rgb(224, 224, 224);
+    border: none;
+    font-size: 50px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 13px;
+    line-height: 160px;
+}
+
+#photoAddListWrap input {
+    display: none;
+}
+
+#photoAddListWrap .hospitalPhoto {
+    width: 150px;
+    height: 150px;
+    margin-left: 6px;
+    margin-right: 12px;
+    margin-top: 13px;
+}
+
+#medicalDepartmentWrap h2 {
+    display: inline-block;
+}
+
+#medicalDepartmentWrap button {
+    margin-left: 30px;
+    border-radius: 5px;
+    width: 50px;
+    background: white;
+    border: 1px solid #424242;
+}
+
+#animalList {
+    margin: 10px 10px;
+    width: 730px;
+    height: 35px;
+    position: relative;
+}
+
+#animalList li {
+    width: 80px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: -3px;
+    text-align: center;
+    display: inline-block;
+}
+
+#animalList li a {
+    text-decoration: none;
+    color: black;
+}
+
+#tap_animalList .on {
+    border-bottom: 4px solid #2699f7;
+}
+
+#addTapSelect {
+    width: 80px;
+    height: 20px;
+}
+.contentList {
+    width: 1040px;
+    display: block;
+
+}
+.list {
+    width: 1040px;
+
+}
+#animalContent .contentList {
+    display: none;
+
+}
+
+#animalContent .contentList.show {
+    display: block;
+}
+
+#animalContent .list div {
+    width: 130px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+
+.list div:nth-child(2n-1) {
+    font-size: 18px;
+    font-weight: 400;
+
+}
+
+.list div:nth-child(2n) {
+    font-size: 17px;
+    font-weight: 200;
+
+}
+
+#animalContent .list div:nth-child(4) {
+    width: 200px;
+}
+
+#animalContent .list div:nth-child(1) {
+    clear: both;
+}
+
+#btn_add button {
+    width: 200px;
+    display: none;
+    margin: 30px auto;
+
+}
+
+#btn_add .on {
+    display: block
+}
+
+.btn_delete {
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.inputContent {
+    display: none;
+}
+
+.inputContent.on {
+    display: block;
+}
+
+
+#addTapSelect.on {
+    display: block;
+    border-bottom: 0;
+    margin: auto;
+}
+
+#reviewDetailWrap{
+    position: fixed;
+    z-index: 99;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,.75);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    display: none;
+}
+
+#reviewAbstract{
+
+    width: 570px;
+    height: 250px;
+    position: relative;
+    padding-left: 20px;
+
+}
+
+#reviewAbstract #reviewScoreWrap{
+    width: 170px;
+    height: 200px;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+}
+
+#reviewAbstract #reviewScoreWrap img{
+    width: 170px;
+    height: 170px;
+    background: white;
+}
+#reviewAbstract #reviewScoreWrap .bigTreeScore{
+    margin-top: 15px;
+}
+#reviewContentWrap{
+    width: 1040px;
+}
+.reviewDetailContent{
+    width: 680px;
+
+    margin :20px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+
+}
+.reviewDetailContent li {
+    margin :20px;
+    position: relative;
+    float: left;
+
+}
+.reviewDetailContent li div{
+    margin-bottom: 10px;
+}
+.reviewDetailContent li div:nth-child(1){
+    font-size: 24px;
+    font-weight: 500;
+    float: left;
+}
+.reviewDetailContent li img {
+    width: 30px;
+    height:30px;
+    position: absolute;
+    right: 0;
+
+
+}
+.reviewDetailContent li div:nth-child(3){
+    clear: both;
+    font-size: 18px;
+    font-weight: 500;
+}
+.reviewDetailContent li div:nth-child(4){
+    font-size: 18px;
+    font-weight: 500;
+}
+.reviewDetailContent li div:nth-child(5){
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 20px;
+    width: 300px;
+    height: 62px;
+    overflow: hidden;
+
+}
+
+.reviewDetailContent li button{
+    width: 100px;
+    height: 25px;
+    background: #2699f7;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    left: 200px;
+    border: none;
+    border-radius: 5px;
+
+}
+
+#popup_reviewDetail{
+    width: 440px;
+    height: 480px;
+    background: white;
+    position: fixed;
+    left: 50%;
+    margin-left: -220px;
+    z-index:100;
+    display: none;
+    padding: 30px 30px;
+    top: 50%;
+    margin-top: -240px;
+
+}
+
+
+#popup_reviewDetail img{
+    width: 100px;
+    height:100px;
+    display: block;
+    margin: auto;
+}
+#popup_reviewDetail #reviewTitle{
+    font-size: 24px;
+    font-weight: 600;
+    margin: 20px 15px;
+}
+#popup_reviewDetail span{
+    font-size: 18px;
+    font-weight: 400;
+}
+#popup_reviewDetail #writer{
+    margin-right: 100px;
+    margin-left: 15px;
+}
+#popup_reviewDetail #review{
+    width: 400px;
+    height: 80px;
+    margin: auto;
+    margin-bottom: 25px;
+    margin-top: 5px;
+    padding: 15px 15px;
+    line-height: 20px;
+
+}
+#popup_reviewDetail #reviewReply textarea{
+    background:  #DFF2FF;
+    width: 400px;
+    height: 80px;
+    margin: auto;
+    padding: 15px 15px;
+    border-radius: 4px;
+}
+
+#popup_reviewDetail button{
+    font-size: 25px;
+    font-weight: 300;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border: none;
+    background: white;
+    cursor:pointer;
+
+}
+
+#popup_reviewDetail form button{
+    font-size: 17px;
+    font-weight: 300;
+    width: 300px;
+    height: 40px;
+    position: absolute;
+    top: 480px;
+    left: 50%;
+    margin-left:-150px;
+    border: none;
+    color: white;
+    background :#2699f7;
+    cursor:pointer;
+
+}
+
+
+
+
+#employeeInformWrap table {
+    width: 800px;
+    position: relative;
+    margin-top: 15px;
+}
+
+#employeeInformWrap tr, td, th {
+    border: 1px solid #424242;
+    padding: 15px 10px;
+    text-align: center;
+
+}
+
+#employeeInformWrap th {
+    background: #f2f2f2;
+}
+
+#employeeInformWrap th:nth-child(1) {
+    width: 180px;
+}
+
+#employeeInformWrap th:nth-child(3) {
+    width: 180px;
+}
+
+#employeeTableContent,#employeeTable {
+    width: 800px;
+    margin: 30px auto;
+
+
+}
+
+#employeeTable td .btn_select {
+    background: white;
+    color: #2699f7;
+    border: 1px solid #424242;
+    border-radius: 5px;
+    padding: 1px 10px;
+    margin: auto 5px;
+    cursor: pointer;
+}
+
+#employeeTable td .btn_select:nth-child(1) {
+    background: #2699f7;
+    color: white;
+}
+
+#employeeTable tr:nth-child(5) {
+    border: none;
+    background: none;
+}
+
+.btn_certification {
+    background: #2699f7;
+    color: white;
+    border: 1px solid #424242;
+    border-radius: 5px;
+}
+
+#employeeTable .btn_employeeDelete {
+    font-size: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+}
+
+#tap_animalList {
+    height: 42px;
+    border-bottom: 1px solid #424242;
+    margin-bottom: 10px;
+}
+
+#tap_animalList li {
+    height: 30px;
+}
+
+.btn_photo {
+    background: none;
+    border: none;
+    font-size: 20px;
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.btn_photo:hover {
+    transform: scale(1.2);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);;
+}
+
+#btn_photoSave.btn_photo {
+    bottom: 40px;
+    right: 10px;
+    display: none;
+}
+
+
+#photoAddListWrap .photoList {
+    position: relative;
+}
+
+.btn_photoDelete {
+    background: #a2a2a2;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: 200;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    display: none;
+
+
+}
+
+.btn_photoDelete:hover {
+    background: #424242;
+}
+
+#fileInput .myLabel {
+    display: none;
+}
+
+.btn_mainImage {
+    background: none;
+    border: none;
+    font-size: 20px;
+    position: absolute;
+    top:164px;
+    right:-10px;
+    cursor: pointer;
+}
+
+.btn_mainImage:hover {
+    transform: scale(1.2);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);;
+}
+
+#fileInputWrap #btn_mainImageSave{
+    top: 135px;
+    right: -5px;
+    display: none;
+
+}
+
+textarea{
+    resize:none;
+}
+#btn_employeeSearch{
+    margin-left: 10px;
+    border-radius: 4px;
+    color: #2699f7;
+    background: white;
+    border: 1px solid #2699f7;
+    cursor:pointer;
+}
+
+#popup_employeeSearch{
+    width: 300px;
+    height: 200px;
+    background:white;
+    position: fixed;
+    left: 50%;
+    margin-left: -150px;
+    z-index: 100;
+    padding: 30px 30px;
+    top: 50%;
+    margin-top: -100px;
+    display: none;
+    text-align: center;
+}
+#popup_employeeSearch form button{
+    color: white;
+    cursor:pointer;
+    border-radius: 5px;
+    background-color: #2699f7;
+    border:none;
+    padding: 3px 10px;
+}
+
+#popup_employeeSearch input{
+    margin-top: 20px;
+    width: 200px;
+    height: 20px;
+}
+
+#btn_employeeSearchClose{
+    border: none;
+    background:none;
+    cursor:pointer;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    font-size: 20px;
+}
+
+#nav_hospital {
+    position: absolute;
+    top: 0;
+    width: 300px;
+    height: 550px;
+    z-index: 9;
+    left: 50%;
+    margin-left: 222px;
+    border: 1px solid #9e9e9e;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff;
+}
+.animalProfileBox {
+    width: 80px;
+    text-align: center;
+    overflow: hidden;
+
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+
+}
+.animalProfileBox input {
+    display: none;
+}
+
+.animalProfileBox img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.animalProfileBox p {
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+
+#buttonBox,#dateBox,#diagnosisBox {
+    text-align: center;
+    margin: 20px 0;
+}
+#nav_hospital h4 {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+#nav_hospital form {
+    margin: 10px;
+}
+#nav_hospital input {
+    width: 240px;
+
+    outline: none;
+    border: 1px solid #5e5e5e;
+    font-size: 15px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.diagnosisItem div{
+    text-align: left;
+    padding: 5px;
+
+}
+.diagnosisItem div:nth-child(2){
+    text-align: right;
+}
+.diagnosisItem span {
+    font-size: 15px;
+    font-weight: 500;
+}
+#diagnosisListBox ul {
+    height: 120px;
+    /*overflow-y: scroll;*/
+}
+#diagnosisListBox {
+    background-color: #cdc9c9;
+    width: 242px;
+    height: 150px;
+    margin: auto;
+    position: relative;
+}
+#totalPriceBox {
+    position: absolute;
+    bottom: 0;
+}
+#totalPriceBox span {
+    font-size: 18px;
+    font-weight: 700;
+    display: inline-block;
+    width: 111px;
+    padding: 5px;
+}
+#totalPriceBox span:nth-child(1) {
+    text-align: left;
+}
+#totalPriceBox span:nth-child(2) {
+    text-align: right;
+}
+#nav_hospital button {
+    width: 240px;
+    margin: 10px;
+    color: #fff;
+    background-color: #2699F7;
+    outline: none;
+    border: none;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+#btn_showAll button{
+    width: 150px;
+    height: 30px;
+    border: none;
+    background:#2699f7 ;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 5px;
+    bottom: -10px;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#btn_showAll button:hover{
+    transform: scale(1.1);
+}

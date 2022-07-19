@@ -1,0 +1,17 @@
+[
+  {"name":"슬개골 탈구" ,"minWeight": 0 , "maxWeight":10, "price": 90000,"avgPrice": 850000, "species": 1},
+  {"name":"슬개골 탈구" ,"minWeight": 10 , "maxWeight":20, "price": 100000,"avgPrice": 950000, "species": 1},
+  {"name":"슬개골 탈구" ,"minWeight": 20 , "maxWeight":30, "price": 110000,"avgPrice": 1050000, "species": 1},
+  {"name": "중성화 수술", "minWeight": 0 , "maxWeight":10, "price": 90000,"avgPrice":200000, "species": 2},
+  {"name": "중성화 수술", "minWeight": 10 , "maxWeight":20, "price": 100000,"avgPrice":200000, "species": 2},
+  {"name": "중성화 수술", "minWeight": 20 , "maxWeight":30, "price": 110000,"avgPrice":200000, "species": 2},
+  {"name": "정기검진","minWeight": 0 , "maxWeight":10, "price": 60000, "avgPrice":150000, "species": 3},
+  {"name": "정기검진","minWeight": 10 , "maxWeight":20, "price": 70000, "avgPrice":150000, "species": 3},
+  {"name": "정기검진","minWeight": 20 , "maxWeight":30, "price": 80000, "avgPrice":150000, "species": 3},
+  {"name":"스케일링" ,"minWeight": 0 , "maxWeight":10, "price": 90000,"avgPrice": 850000, "species": 1},
+  {"name":"스케일링" ,"minWeight": 10 , "maxWeight":20, "price": 100000,"avgPrice": 950000, "species": 1},
+  {"name":"스케일링" ,"minWeight": 20 , "maxWeight":30, "price": 110000,"avgPrice": 1050000, "species": 1},
+  {"name":"스케일링" ,"minWeight": 0 , "maxWeight":10, "price": 90000,"avgPrice": 850000, "species": 2},
+  {"name":"스케일링" ,"minWeight": 10 , "maxWeight":20, "price": 100000,"avgPrice": 950000, "species": 2},
+  {"name":"스케일링" ,"minWeight": 20 , "maxWeight":30, "price": 110000,"avgPrice": 1050000, "species": 2}
+]

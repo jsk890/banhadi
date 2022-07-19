@@ -1,0 +1,569 @@
+@charset "UTF-8";
+
+   #content {
+            /*background-color: aqua;*/
+        }
+        /*전체 상자 크기*/
+        #container {
+            /*background-color: aliceblue;*/
+            width: 800px;
+            margin: auto;
+        }
+        /*마이펫*/
+        #container h2 {
+            /*background-color: red;*/
+            font-size: 30px;
+            margin-top: 80px;
+            margin-bottom: 20px;
+        }
+        /*펫의 이름*/
+        .medicalRecords h3 {
+            /*background-color: red;*/
+            font-size: 22px;
+            margin-top: 30px;
+            margin-left: 10px;
+        }
+        /*마이펫 전체 박스*/
+        #petBox {
+            /*background-color: blue;*/
+            width: 800px;
+            height: auto;
+        }
+        .petTab{
+            /*background-color: red;*/
+            width: auto;
+            height: 45px;
+            margin-top: 80px;
+        }
+        /*마이펫 탭 리스트*/
+        .pet_list, .btn_petRegister{
+        	
+            border: 2px solid #424242;
+            border-left: none;
+            border-bottom: none;
+            float: left;
+            width: 157.6px;
+            height: 45px;
+            /*background-color: lime;*/
+            line-height: 0;
+            cursor: pointer;
+            position: relative;
+
+
+        }
+        
+        #petBox .petTab:nth-child(1){
+         border-left: 2px solid #424242;
+      
+        }
+        .pet_list span{
+            font-size : 16px;
+            display : block;
+            width :102px;
+            height : 45px;
+            line-height : 45px;
+        	overflow :hidden;
+            text-align: center;
+            position: relative;
+          	bottom: 44px;
+            left : 55px;
+         
+        }
+        .pet_list:hover, .btn_petRegister:hover{
+            color: #2699ff;
+            background-color: #dffeff;
+        }
+        .pet_list:focus {
+            color: #2699ff;
+            background-color: #dffeff;
+        }
+     
+        .pet_list>img {
+            width: 40px;
+            height: 40px;
+            padding: 2.5px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+        .pet_list input{
+            width: 76px;
+            height: 30px;
+            position: relative;
+            bottom: 19px;
+            right: -10px;
+        }
+        /*탭 안에 있는 이름*/
+
+
+        .btn_petList:focus{
+            outline: none;
+        }
+
+
+        /*탭 밑 펫 정보박스*/
+        #petInformationBox {
+            /*background-color: darksalmon;*/
+            border: 2px solid #424242;
+            width: 796px;
+            
+            clear: both;
+			min-height:390px;
+            position: relative;
+            top: 0;
+        }
+        /*펫정보 등록하는 폼*/
+        .petInformationForm,.newPetRegisterForm {
+            overflow: hidden;
+            width: 600px;
+            height: 280px;
+            background-color: #dffeff;
+
+            position: relative;
+            top: 20px;
+            left: 50%;
+            margin-left: -300px;
+        }
+        /*진료기록*/
+        .medicalRecords {
+            /*background-color: darkgoldenrod;*/
+            margin: 0 20px;
+          
+            position :relative;
+           
+        }
+        /*테이블요소*/
+        table.records {
+            border-collapse: separate;
+            border-spacing: 1px;
+            text-align: left;
+            border-top: 1px solid #ccc;
+            margin : 20px 10px;
+            margin-bottom :50px;
+            width:736px;
+           
+        }
+        
+      
+        /*테이블 제목*/
+        table.records th {
+            width: 184px;
+            padding: 5px;
+            text-align: center;
+            line-height: 15px;
+            font-weight: 700;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+            background-color: #EEEEEE;
+        }
+        /*테이블 내용*/
+        table.records td {
+            width: 350px;
+            padding: 10px;
+            text-align: center;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+            font-size: 15px;
+            line-height: 28px;
+        }
+        table.records td:nth-child(3) {
+            line-height: 15px;
+            /*text-align: left;*/
+            margin-left: 100px;
+            
+        }
+        table.records td span {
+            position: relative;
+            left: 15px;
+        }
+        /*진료,처방 내역 상세보는 아이콘*/
+        table.records button {
+            font-size: 25px;
+            float: right;
+            line-height: 0;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: #424242;
+        }
+        table.records button:hover {
+            color: #2699f7;
+        }
+        /*펫 프로필(이미지, 이름)*/
+        .petProfile {
+            position: relative;
+
+            /*background-color: blueviolet;*/
+            width: 200px;
+            height: 240px;
+            padding: 20px;
+            text-align: center;
+
+        }
+        #petInformForm label{
+            position: relative;
+            top: 10px;
+        }
+        /*펫 이미지 (img_pet)*/
+        .petImg img {
+            position: relative;
+            /*이미지 파일의 너비,높이 나머지 2값*/
+            border-radius: 50%;
+            width: 200px;
+            height:200px;
+        }
+        /*펫 이름*/
+        .petImg>p {
+            position: relative;
+            left: -15px;
+            top: 10px;
+            font-size: 25px;
+            margin: 10px;
+            font-weight: 700;
+        }
+
+        /*폰트어썸 성별, 수정 아이콘*/
+        .fa-mars {
+            font-size: 28px;
+            color: #2196F3;
+            /*display: none;*/
+        }
+        .fa-venus {
+
+            font-size: 28px;
+            color: #E91E63;
+
+        }
+        .btn_modify, .btn_save{
+            font-size: 20px;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            position: absolute;
+
+        }
+        .btn_modify:hover,.btn_save:hover{
+            color: #2699f7;
+        }
+        .btn_modify{
+            right: -10px;
+            bottom: -1px;
+        }
+
+        .btn_save{
+            right: -3px;
+            bottom: 20px;
+        }
+
+        /*펫정보 생년월일,몸무게,소개, 정보저장 등 박스*/
+        .petInformation {
+            position: absolute;
+            top: 0;
+            left: 240px;
+            /*background-color: #009688;*/
+            width: 360px;
+            height: 280px;
+
+            /*폰트 크기*/
+            font-size: 18px;
+            font-weight: 500;
+        }
+        /*.petInformation dt {*/
+        /*    font-size: 18px;*/
+        /*    font-weight: 500;*/
+        /*    margin-bottom: 25px;*/
+        /*}*/
+        .petInformation ul , .petInformation form{
+            position: absolute;
+            left: 30px;
+            top: 10px;
+            line-height: 40px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .btn_complete {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            color: #2699f7;
+            border: 1px solid #2699f7;
+            width: 75px;
+            height: 35px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        
+       
+        .btn_complete:hover {
+            color: #2699ff;
+            background-color: #dffeff;
+        }
+
+        .petInformation input{
+            width: 200px;
+        
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        /*#petDate {*/
+
+        /*}*/
+        /*#petWeight {*/
+
+        /*}*/
+        .petInformation .petSpecifics {
+            font-family: 'Noto Sans KR', sans-serif;
+            position: relative;
+            top: 10px;
+            resize: none;
+            width: 300px;
+            height: 80px;
+            line-height: 20px;
+        }
+
+        /*팝업 클릭시 외부 백그라운드*/
+        .popup_background {
+            display: none;
+            left: 0;
+            top: 0;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+
+            z-index: 9;
+        }
+
+        .popup_opinion textarea {
+            width: 376px;
+            height: 86px;
+            margin-top: 5px;
+            padding: 2px;
+        }
+
+        /*소견작성 팝업*/
+        .popup_opinion {
+            background-color: #fff;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin: -250px 0 0 -200px;
+            border: 1px solid #4e4e4e;
+            border-radius: 20px;
+            width: 420px;
+            height: 500px;
+            display: none;
+            z-index: 10;
+        }
+
+        .popup_header {
+            /*width: auto;*/
+            height: 30px;
+            /*background-color: red;*/
+        }
+
+        .popup_opinion h2 {
+            font-size: 25px;
+            text-align: center;
+            margin: 20px;
+            font-weight: 700;
+        }
+
+        .popup_opinion span {
+            font-size: 20px;
+            font-weight: 400;
+            margin-left: 8px;
+        }
+        .popup_opinion p {
+            font-size: 14px;
+            font-weight: 400;
+            overflow-y: auto;
+        }
+
+        .popup_opinion div {
+            width: 384px;
+            margin: 8px;
+        }
+
+        .popup_opinion textarea {
+            width: 376px;
+            height: 86px;
+            resize: none;
+            margin-top: 5px;
+            padding: 2px;
+        }
+        .popup_contents {
+        	height:399px;
+        }
+        .popup_contents div{
+        	height:103px;
+        	background: #DFF2FF;
+        }
+
+        .popup_on {
+            display: block;
+        }
+
+        .popup_opinion i {
+            font-size: 20px;
+            position: absolute;
+            margin: 10px;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+        }
+
+
+        .check_male i {
+            color: #2699f7;
+            position: relative;
+            top: 10px;
+        }
+
+        #petNameInput {
+            width: 80px;
+            height: 28px;
+            position: relative;
+            top: 5px;
+        }
+
+        /*이거 왜 css 안먹지?*/
+        .petIng>label>input {
+            position: relative;
+            top: 10px;
+        }
+
+        .petImg>label>i {
+            font-size: 25px;
+            position: relative;
+            top: 10px;
+        }
+
+        #petInform {
+            font-size: 25px;
+            font-family: "Noto Sans KR", sans-serif;
+            width: 200px;
+            position: relative;
+            text-align: center;
+            margin-top: 14px;
+
+
+        }
+
+
+        #petDetailForm{
+            display: none;
+            width: 330px;
+            height: 260px;
+            position: absolute;
+            left: 32px;
+            top: 20px;
+     
+         
+        }
+      
+        #petDetailForm.show{
+            display: block;
+        }
+        #petDetail.hide{
+            display: none;
+        }
+        #petName{
+            font-size: 23px;
+            font-weight: 700;
+        }
+
+        .btn_photoChange {
+
+            border: solid 2px #fff;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            font-weight: 200;
+            cursor: pointer;
+            position: absolute;
+            right: 40px;
+            bottom: 75px;
+              background: #a2a2a2;
+            display: none;
+            line-height: 30px;
+        }
+
+        .btn_photoChange:hover {
+            background: #424242;
+        }
+        .btn_photoChange:focus{
+            outline: none;
+        }
+
+
+        #petImage{
+            display: none;
+        }
+        .btn_opinion {
+        	position:relative;
+        	top: -10px;
+        	left :5px;
+        	background-color: transparent;
+        }
+        
+        .newPetRegisterForm{
+       	  display:none;
+        }
+        
+        .newPetRegisterForm.show{
+       	  display:block;
+        }
+    	.petInformationForm.hide{
+    		display : none;
+    	}
+    .btn_petImageDelete{
+       		border : none;
+            color: black;
+            border-radius: 50%;
+            width: 27px;
+            height: 27px;
+            font-size: 16px;
+            font-weight: 200;
+            cursor: pointer;
+            position: absolute;
+            right: 28px;
+            top: 50px;
+              background: #a2a2a2;
+            line-height: 27px;
+            display :none;
+    }
+        .btn_petImageDelete:hover {
+            background: #424242;
+            color : #fff;
+        }
+        .btn_petImageDelete:focus{
+            outline: none;
+        }
+         .btn_petRegister {
+            font-size: 30px;
+            font-weight : 600;
+            text-align: center;
+            line-height : 45px;
+          
+        }
+        .btn_update{
+        	display :none;
+        }
+        .btn_register{
+        	display :none;
+        }
+        
+        .btn_update.show{
+        	display :block;
+        }
+        .btn_register.show{
+        	display :block;
+        }
+        
+     .paginate {
+     	position :relative;
+     	bottom :25px;
+     }
