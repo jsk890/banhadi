@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospital_equipments">
+
+	<select id="selectEquipments" parameterType="int" resultType="Equipment">
+		SELECT he.no , equipment_no equpmentNo, hospital_no hospitalNo, e.name name, e.english_name englishName, e.contents contents, e.department department, he.regdate regdate
+		FROM hospital_equipments he, equipments e
+		WHERE e.no = equipment_no AND hospital_no = #{no}
+	</select>
+	
+</mapper>

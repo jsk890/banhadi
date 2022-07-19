@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="facilities_hospital">
+
+	<select id="selectFacilities" parameterType="int" resultType="Facilities">
+		SELECT fh.no no, hospitals_no hospitalsNo, facilities_no facilitiesNo, f.name name, fh.regdate
+		FROM facilities_hospital fh, facilities f
+		WHERE fh.hospitals_no = #{no} AND f.no = fh.facilities_no
+	</select>
+	
+</mapper>
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="experts">
+
+	<select id="selectProfile" parameterType="int" resultType="Expert">
+		SELECT no, hospital_no hospitalNo, grade_no gradeNo, start_date startDate, picture, preface, license_num licenseNum, answer_cnt answerCnt, selection_cnt selectionCnt, like_cnt likeCnt, position, certification, regdate
+		FROM experts
+		WHERE no = #{no}
+	</select>
+	
+	<select id="selectHospiterMember" parameterType="int" resultType="Expert">
+		SELECT e.no no, u.name name, hospital_no hospitalNo, grade_no gradeNo, start_date startDate, picture, preface, license_num licenseNum, answer_cnt answerCnt, selection_cnt selectionCnt, like_cnt likeCnt, position, certification, e.regdate regdate
+		FROM experts e, users u
+		WHERE hospital_no = #{no} AND e.no = u.no
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="Expert">
+		SELECT no, picture, preface, grade_no gradeNo, start_date startDate, position,
+			(SELECT phone FROM users WHERE no=user_no) phone,
+			(SELECT name FROM hospitals WHERE no=hospital_no) hospitalName
+		FROM experts
+		WHERE no = #{no}
+	</select>
+	
+</mapper>
+

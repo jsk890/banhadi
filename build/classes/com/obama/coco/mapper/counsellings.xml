@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="counsellings">
+
+	<!-- 종별로  -->
+	<select id="selectRankTop" resultType="Question">
+		SELECT CASE WHEN LENGTH(title) > 20 THEN SUBSTR(title, 1, 20) || '...'
+			ELSE TITLE
+			END TITLE,
+			SPECIES_NO speciesNo, QUESTION_LIKE questionLike, VIEWS
+		FROM( 
+			SELECT title, species_no, question_like, views, row_number () OVER (PARTITION BY species_no ORDER BY views DESC) AS row_no
+			FROM questions
+		) 
+		WHERE row_no = '1'
+	</select>
+	
+</mapper>
+

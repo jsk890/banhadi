@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reservations">
+
+	<select id="selectList" resultType="Reservation" parameterType="map">
+		SELECT r.no no, state,specific,price,reservations_date reservationsDate, 
+		(SELECT name FROM users WHERE r.user_no =users.no) userName,
+		(SELECT phone FROM users WHERE r.user_no =users.no) userPhone,
+		hospital_no hospitalNo,
+		(SELECT name FROM hospitals WHERE r.hospital_no=hospitals.no) hospitalName,
+		(SELECT picture FROM mypets WHERE r.animal_no = mypets.no) picture,
+		(SELECT name from mypets WHERE r.animal_no = mypets.no) petName,
+		(SELECT species_no from mypets WHERE r.animal_no = mypets.no) speciesNo,
+		(SELECT(SELECT name
+			FROM species 
+			WHERE mypets.species_no = species.no)
+		FROM mypets
+		WHERE mypets.no = r.animal_no) speciesName
+		FROM reservations r
+		WHERE hospital_no = #{hospitalNo} AND state = #{state}
+	</select>
+
+	<select id="selectAllList" resultType="Reservation" parameterType="int">
+		SELECT state,reservations_date reservationsDate, 
+		(SELECT name from mypets WHERE r.animal_no = mypets.no) petName
+		FROM reservations r
+		WHERE hospital_no = #{hospitalNo}
+	</select>
+
+<select id="selectOne" resultType="Reservation" parameterType="int">
+		SELECT r.no no, state,specific,price,reservations_date reservationsDate, 
+		(SELECT name FROM users WHERE r.user_no =users.no) userName,
+		(SELECT phone FROM users WHERE r.user_no =users.no) userPhone,
+		hospital_no hospitalNo,
+		(SELECT name FROM hospitals WHERE r.hospital_no=hospitals.no) hospitalName,
+		(SELECT picture FROM mypets WHERE r.animal_no = mypets.no) picture,
+		(SELECT name from mypets WHERE r.animal_no = mypets.no) petName,
+		(SELECT species_no from mypets WHERE r.animal_no = mypets.no) speciesNo,
+		(SELECT(SELECT name
+			FROM species 
+			WHERE mypets.species_no = species.no)
+		FROM mypets
+		WHERE mypets.no = r.animal_no) speciesName
+		FROM reservations r
+		WHERE r.no = #{reservationNo}
+</select>
+
+
+
+<update id="updateStateToComplete" parameterType="int">
+	UPDATE reservations
+	SET state = 'c'
+	WHERE no= #{no}
+</update>
+
+<update id="updateStateToTrue" parameterType="int">
+	UPDATE reservations
+	SET state = 't'
+	WHERE no= #{no}
+</update>
+
+<update id="updateStateToReject" parameterType="int">
+	update reservations
+	set state='r'
+	where no= #{no}
+</update>
+
+
+
+
+	<select id="selectMedicalList" parameterType="int" resultType="Medical">
+		SELECT m.name name, hm.price price
+		FROM reservation_hospital_medicals rhm
+		JOIN hospital_medicals hm
+		ON rhm.medicals_no = hm.no
+		JOIN medicals m
+		ON hm.medical_no = m.no
+		WHERE rhm.reservation_no = #{no}
+	</select>
+
+	<select id="selectSymptomList" parameterType="int" resultType="String">
+		SELECT s.name symptom
+		FROM reservation_symptoms rs
+		JOIN symptoms s
+		ON rs.symptomses_no = s.no
+		WHERE rs.reservation_no = #{no}
+	</select>
+	
+	<select id="selectReservationListByPet" resultType="Reservation" parameterType="map">
+		SELECT no,reservations_date reservationsDate, (SELECT name FROM hospitals WHERE hospitals.no = reservations.hospital_no) hospitalName
+		FROM reservations
+		WHERE user_no = #{userNo} and state='c'and animal_no=#{petNo}
+	</select>
+
+	<select id="paginateReservationsListByPet" parameterType="map" resultType="Reservation">
+	SELECT no, reservationsDate, hospitalName
+	FROM(SELECT no, reservationsDate, hospitalName, rownum r	
+	FROM(SELECT no,reservations_date reservationsDate, (SELECT name FROM hospitals WHERE hospitals.no = reservations.hospital_no) hospitalName
+	FROM reservations
+	WHERE user_no = #{userNo} and state='c'and animal_no=#{petNo} 
+	ORDER BY 2 DESC))
+	WHERE r between #{start} and #{end}
+		
+	</select>
+	
+	
+	<select id="selectTotal" resultType="int" parameterType="map">
+		SELECT COUNT(*)
+		FROM reservations
+		WHERE user_no = #{userNo} and state='c'and animal_no=#{petNo}
+	</select>
+	
+
+	
+
+</mapper>
+

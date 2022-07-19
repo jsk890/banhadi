@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="expert_answers">
+
+	<insert id="insertAnswers" parameterType="ExpertAnswer">
+		<selectKey order="BEFORE" resultType="int" keyProperty="no">
+			SELECT expert_answers_seq.nextval
+			FROM dual
+		</selectKey>
+		INSERT INTO expert_answers (no, expert_no, question_no, contents, regdate)
+		VALUES (#{no}, #{expertNo}, #{questionNo}, #{contents}, sysdate)
+	</insert >
+	
+	<select id="selectTotal" resultType="int" parameterType="int">
+		SELECT COUNT(*)
+		FROM expert_answers
+		WHERE question_no = #{questionNo}
+	</select>
+	
+	<select id="selectAnswerList" parameterType="int" resultType="ExpertAnswer">
+		SELECT u.name userName, e.position as position, h.name hospitalName, ea.regdate regdate,
+		 		ea.adoption, m.name medicalName, ea.contents, ea.like_cnt likeCnt
+		FROM expert_answers ea, users u, experts e, hospitals h, medicals m, medical_answers ma
+		WHERE ea.expert_no = u.no
+				AND ea.expert_no = e.no
+				AND h.no = e.hospital_no
+				AND m.no = ma.medicals_no
+				AND ma.expert_answers_no = ea.no
+				AND ea.question_no = #{questionNo}
+	</select>
+	
+</mapper>

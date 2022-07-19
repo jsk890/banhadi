@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="available_animals">
+
+	<select id="selectList" parameterType="int" resultType="AvailableAnimal">
+		SELECT a.no no, species_no speciesNo, hospital_no hospitalNo, s.name name, a.regdate regdate
+		FROM available_animals a, species s
+		WHERE a.no = #{no} AND a.species_no = s.no
+	</select>
+</mapper>

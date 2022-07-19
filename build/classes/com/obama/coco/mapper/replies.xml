@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="replies">
+	
+	<select id="selectTotal" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM replies
+		WHERE question_no = #{questionNo}
+	</select>
+	
+	<select id="selectList" parameterType="int" resultType="Reply">
+		SELECT no, question_no questionNo, user_no userNo, contents, regdate, 
+				(SELECT name FROM users WHERE no=user_no) userName,  
+				(SELECT membership FROM normal_users WHERE no=user_no) membership
+		FROM replies
+		WHERE question_no = #{questionNo}
+		ORDER BY 1
+	</select>
+	
+	<select id="selectPageList" parameterType="PageVO" resultType="Reply">
+		SELECT no, questionNo, userNo, contents, regdate, userName, membership
+		FROM(SELECT no, questionNo, userNo, contents, regdate, userName, membership, rownum r
+			 FROM(SELECT no, question_no questionNo, user_no userNo, contents, regdate, 
+						(SELECT name FROM users WHERE no=user_no) userName,  
+						(SELECT membership FROM normal_users WHERE no=user_no) membership
+				  FROM replies
+				  WHERE question_no = #{no}
+				  ORDER BY 1))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+	
+</mapper>

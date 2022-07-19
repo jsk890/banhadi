@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <settings>
+      <setting name="jdbcTypeForNull" value="NULL" />
+   </settings>
+   
+
+   <typeAliases>
+     <typeAlias type="com.obama.coco.vo.User" alias="User"/>
+     <typeAlias type="com.obama.coco.vo.Medical" alias="Medical"/>
+     <typeAlias type="com.obama.coco.vo.ExpertAnswer" alias="ExpertAnswer"/>
+     <typeAlias type="com.obama.coco.vo.MedicalAnswer" alias="MedicalAnswer"/>
+     <typeAlias type="com.obama.coco.vo.Expert" alias="Expert"/>
+     <typeAlias type="com.obama.coco.vo.Hospital" alias="Hospital"/>
+     <typeAlias type="com.obama.coco.vo.AvailableAnimal" alias="AvailableAnimal"/>
+     <typeAlias type="com.obama.coco.vo.Equipment" alias="Equipment"/>
+     <typeAlias type="com.obama.coco.vo.Facilities" alias="Facilities"/>
+     <typeAlias type="com.obama.coco.vo.Facility" alias="Facility"/>
+     <typeAlias type="com.obama.coco.vo.HospitalPhoto" alias="HospitalPhoto"/>
+     <typeAlias type="com.obama.coco.vo.HospitalMedical" alias="HospitalMedical"/>
+     <typeAlias type="com.obama.coco.vo.Review" alias="Review"/>
+     <typeAlias type="com.obama.coco.vo.Careers" alias="Careers"/>
+     <typeAlias type="com.obama.coco.vo.PageVO" alias="PageVo"/>
+     <typeAlias type="com.obama.coco.vo.Calendar" alias="Calendar"/>
+     <typeAlias type="com.obama.coco.vo.MyPet" alias="MyPet"/>
+     <typeAlias type="com.obama.coco.vo.Reservation" alias="Reservation"/>
+     <typeAlias type="com.obama.coco.vo.Opinion" alias="Opinion"/>
+     <typeAlias type="com.obama.coco.vo.Question" alias="Question"/>
+     <typeAlias type="com.obama.coco.vo.Species" alias="Species"/>
+     <typeAlias type="com.obama.coco.vo.Reply" alias="Reply"/>
+     <typeAlias type="com.obama.coco.vo.AvailableTime" alias="AvailableTime"/>
+   </typeAliases>
+   
+   <!-- 데이터베이스와 연결 환경설정 -->
+   <environments default="development">
+      <environment id="development">
+         <transactionManager type="JDBC" />
+         <dataSource type="JNDI">
+            <property name="data_source" value="java:comp/env/oraclexe" />
+         </dataSource>
+      </environment>
+   </environments>
+
+   <!-- mapper 경로 설정 -->
+   <mappers>
+      <mapper resource="/com/obama/coco/mapper/users.xml"/>
+      <mapper resource="/com/obama/coco/mapper/medicals.xml"/>
+      <mapper resource="/com/obama/coco/mapper/expertAnswers.xml"/>
+      <mapper resource="/com/obama/coco/mapper/medicalAnswers.xml"/>
+      <mapper resource="/com/obama/coco/mapper/experts.xml"/>
+      <mapper resource="/com/obama/coco/mapper/hospitals.xml"/>
+      <mapper resource="/com/obama/coco/mapper/availableAnimals.xml"/>
+      <mapper resource="/com/obama/coco/mapper/hospitalEquipments.xml"/>
+      <mapper resource="/com/obama/coco/mapper/facilitiesHospital.xml"/>
+      <mapper resource="/com/obama/coco/mapper/hospitalPhotos.xml"/>
+      <mapper resource="/com/obama/coco/mapper/reviews.xml"/>
+      <mapper resource="/com/obama/coco/mapper/careers.xml"/>
+      <mapper resource="/com/obama/coco/mapper/licenses.xml"/>
+      <mapper resource="/com/obama/coco/mapper/hospitals.xml"/>
+      <mapper resource="/com/obama/coco/mapper/business.xml"/>
+	  <mapper resource="/com/obama/coco/mapper/reservations.xml"/>
+	  <mapper resource="/com/obama/coco/mapper/opinions.xml"/>
+	  <mapper resource="/com/obama/coco/mapper/mypets.xml"/>
+	  <mapper resource="/com/obama/coco/mapper/counsellings.xml"/>
+	  <mapper resource="/com/obama/coco/mapper/species.xml"/>
+	  <mapper resource="/com/obama/coco/mapper/questions.xml"/>
+	  <mapper resource="/com/obama/coco/mapper/replies.xml"/>
+	  <mapper resource="/com/obama/coco/mapper/availableTime.xml"/>
+	  <mapper resource="/com/obama/coco/mapper/facilities.xml"/>
+	  <mapper resource="/com/obama/coco/mapper/hospitalMedicals.xml"/>
+   </mappers>
+
+</configuration>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myPets">
+
+
+	<select id="selectMypetList" parameterType = "int" resultType="Mypet">
+	
+		SELECT no, user_no userNo, species_no speciesNo, name, gender, picture,  weight, specific, birthday, regdate  
+		FROM mypets
+		WHERE user_no = #{userNo}
+		ORDER BY regdate DESC
+		
+	</select>
+
+	<select id="selectMyPetList" resultType="MyPet" parameterType="int">
+		SELECT no, name, picture, gender, weight, specific, birthday, (SELECT name FROM species WHERE species.no=mypets.species_no) speciesName
+		FROM mypets
+		WHERE user_no = #{userNo}
+	</select>
+	
+	<select id="selectMyPet" resultType="MyPet" parameterType="map">
+		SELECT no, name, picture, gender, weight, specific, birthday, (SELECT name FROM species WHERE species.no=mypets.species_no) speciesName
+		FROM mypets
+		WHERE user_no = #{userNo} and no = #{petNo}
+	</select>
+
+	<select id="selectMyNewPet" resultType="MyPet" parameterType="int">
+		SELECT *
+		FROM 
+		(SELECT no, user_no userNo, name, picture, gender, weight, specific, birthday, (SELECT name FROM species WHERE species.no=mypets.species_no) speciesName
+			FROM mypets
+		ORDER BY no DESC)
+		WHERE userNo=#{userNo} AND rownum=1
+		
+	</select>
+	
+	<update id="updateMyPet" parameterType="MyPet">
+		UPDATE mypets
+		SET species_no=#{speciesNo}, weight=#{weight}, specific =#{specific}, birthday=#{birthday} , picture = #{picture}, name=#{name}, gender=#{gender}
+		WHERE no =#{no}
+	</update>
+	
+	<insert id="registerMyPet" parameterType="MyPet">
+		INSERT INTO mypets (no, user_no, species_no, name, gender, picture, weight, specific, birthday, regdate)
+		VALUES (mypets_seq.nextval, #{userNo}, #{speciesNo}, #{name}, #{gender},#{picture} , #{weight}, #{specific}, #{birthday}, sysdate)	
+	</insert>
+	
+	
+
+
+
+	
+</mapper>
+

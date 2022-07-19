@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospitals">
+
+	<select id="selectHospital" parameterType="int" resultType="Hospital">
+		SELECT no, business_no businessNo, name, main_image mainImage, address, latitude, longtitude, phone_num phoneNum, price_score priceScore, accessibility_score accessibilityScore, kindness_score kindnessScore, cleanliness_score cleanlinessScore, specialty_score specialtyScore, emergency, regdate
+		FROM hospitals
+		WHERE no = #{no}
+	</select>
+	
+	<select id="selectHospitalbyNoState" parameterType="map" resultType="Hospital">
+		SELECT no, name, (SELECT COUNT(*) FROM reservations WHERE hospital_no = #{no} AND state=#{state}) count
+		FROM hospitals
+		WHERE no=#{no} 
+	</select>
+	<!-- 병원정보 조회 -->
+	<select id="selectHospitals" parameterType="Map" resultType="Map"><![CDATA[
+		SELECT
+		    NO
+		    ,REPLACE(BUSINESS_NO,'-','') AS BUSINESS_NO
+		    ,NAME
+		    ,MAIN_IMAGE
+		    ,ADDRESS
+		    ,LATITUDE
+		    ,LONGTITUDE
+		    ,PHONE_NUM
+		    ,PRICE_SCORE
+		    ,ACCESSIBILITY_SCORE
+		    ,KINDNESS_SCORE
+		    ,CLEANLINESS_SCORE
+		    ,SPECIALTY_SCORE
+		    ,EMERGENCY
+		    ,TO_CHAR(REGDATE, 'YYYY-MM-DD') AS REGDATE
+		FROM HOSPITALS
+		WHERE 1=1
+			AND NAME LIKE '%' || #{hospitalName} || '%'
+	]]></select>
+	
+	<select id="selectHospitalsNo" parameterType="Map" resultType="Map"><![CDATA[
+		SELECT
+			MAX(NO) + 1 AS NO
+		FROM HOSPITALS
+	]]></select>
+	
+	<!-- 병원정보 추가 -->
+	<insert id="insertHospital" parameterType="Map"><![CDATA[
+		INSERT INTO HOSPITALS
+		(
+			NO
+			,BUSINESS_NO
+			,NAME
+			,ADDRESS
+			,LATITUDE
+			,LONGTITUDE
+			,PHONE_NUM
+			,REGDATE
+		)
+		VALUES
+		(
+			#{hospitalNo}
+			,#{business_no}
+			,#{hospital_name}
+			,#{hospital_address}
+			,#{latitude}
+			,#{longtitude}
+			,#{phone}
+			,SYSDATE
+		)
+	]]></insert>
+</mapper>
+

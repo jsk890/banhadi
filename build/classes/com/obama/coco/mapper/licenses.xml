@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="licenses">
+	<!-- 면허 정보 조회 -->
+	<select id="selectCheckLicense" parameterType="Map" resultType="Map"><![CDATA[
+		SELECT 
+			NO
+			,LICENSE_NUM
+			,NAME
+			,TO_CHAR(BIRTHDAY,'YYYY-MM-DD') AS BIRTHDAY
+			,TO_CHAR(REGDATE, 'YYYY-MM-DD') AS REGDATE
+  		FROM LICENSES
+		WHERE 1=1 
+			AND LICENSE_NUM = #{license_num}
+	]]></select>
+</mapper>
+

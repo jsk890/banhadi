@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="opinions">
+
+	<insert id="insertOpinion" parameterType="Opinion">
+		INSERT INTO opinions (no,RESERVATION_NO,DIAGNOSIS,NOTICE,PRESCRIPTION, REGDATE, user_no)
+		VALUES (opinions_seq.nextval, #{reservationNo}, #{diagnosis},#{notice},#{prescription},sysdate,#{userNo})
+	</insert>
+	
+	<select id="selectOpinion" parameterType="int" resultType="Opinion">
+		SELECT o.no no,reservation_no reservationNo, diagnosis, notice, prescription, (SELECT name FROM users WHERE o.user_no = users.no) doctorName
+		FROM opinions o
+		WHERE reservation_no = #{reservationNo}
+	</select>
+
+	<update id="updateOpinion" parameterType="Opinion">
+		UPDATE opinions
+		SET diagnosis = #{diagnosis}, notice =#{notice}, prescription = #{prescription}
+		WHERE reservation_no = #{reservationNo}
+	</update>
+</mapper>
+

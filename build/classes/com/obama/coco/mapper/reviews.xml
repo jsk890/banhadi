@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviews">
+
+	<select id="selectReviews" parameterType="PageVo" resultType="Review">
+				SELECT no, content, userNo, reservationNo, priceScore, accessibilityScore, kindnessScore, cleanlinessScore, specialtyScore, regdate
+		FROM (	SELECT  no, content, userNo, reservationNo, regdate, priceScore, accessibilityScore, kindnessScore, cleanlinessScore, specialtyScore, rownum r
+				FROM (	SELECT no, content, user_no userNo, reservation_no reservationNo, price_score priceScore, accessibility_score accessibilityScore, kindness_score kindnessScore, cleanliness_score cleanlinessScore, specialty_score specialtyScore, regdate
+						FROM reviews
+                        WHERE reservation_no IN(
+                                                SELECT no
+                                                FROM reservations
+                                                WHERE hospital_no =	#{no}
+                                                )
+						ORDER BY 10 DESC))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+	<select id="selectReviewCount" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM reviews
+		WHERE reservation_no IN(
+                           SELECT no
+                           FROM reservations
+                           WHERE hospital_no =	#{no}
+                         )
+	</select>
+	
+
+</mapper>
