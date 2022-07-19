@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="medical_answers">
+
+	<select id="insertMedicalAnswers" parameterType="MedicalAnswer" resultType="int">
+		INSERT INTO medical_answers (no, medicals_no, expert_answers_no, regdate)
+		VALUES(medical_answers_seq.nextval, #{medicalsNo}, #{expertAnswersNo}, sysdate)
+	</select>
+	
+</mapper>

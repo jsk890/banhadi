@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospitalMedicals">
+
+<!-- resultType:마이바티스가 넘겨주는 타입, parameterType:여기서 넘겨주는 타입 -->
+<!-- 넘겨 주는 방식은 두가지 : vo, map -->
+<!-- 
+#{id}, 라고 쓰면 getId를 마이바티스가 vo에서 호출하여 자동으로 가져간다 -->
+
+
+	<select id="selectHospitalMedicalList" parameterType = "map" resultType="Hospital">
+		SELECT no,r, businessNo, name, mainImage,
+				address, latitude, longtitude, phoneNum, priceScore,
+				accessibilityScore, kindnessScore,
+				cleanlinessScore, specialtyScore, emergency, regdate,
+				hmNo, medicalNo, price, minWeight, maxWeight, speciesNo, hospitalNo,
+				mName, speciesName,
+				(priceScore+accessibilityScore+kindnessScore+cleanlinessScore+specialtyScore)/5 treeScore
+		
+		FROM(SELECT no, businessNo, name, mainImage,
+				address, latitude, longtitude, phoneNum, priceScore,
+				accessibilityScore, kindnessScore,
+				cleanlinessScore, specialtyScore, emergency, regdate,
+				hmNo, medicalNo, price, minWeight, maxWeight, speciesNo, hospitalNo,
+				mName, speciesName, rownum r
+				
+				FROM(SELECT h.no no, business_no businessNo, h.name name, main_image mainImage,
+					address, latitude, longtitude, phone_num phoneNum, price_score priceScore,
+					accessibility_score accessibilityScore, kindness_score kindnessScore,
+					cleanliness_score cleanlinessScore, specialty_score specialtyScore, emergency, h.regdate regdate,
+					hmNo, medicalNo, price, minWeight, maxWeight, speciesNo, hospitalNo,
+					mName, speciesName
+					FROM hospitals h,
+						(SELECT no hmNo, medical_no medicalNo, species_no speciesNo, hospital_no hospitalNo,
+								price, min_weight minWeight, max_weight maxWeight, hms.regdate
+								,mName, speciesName
+						FROM hospital_medicals hms,
+							(SELECT no sNo, name speciesName, regdate
+							FROM species )s,
+							(SELECT no mNo, name mName, regdate
+							FROM medicals
+							WHERE name LIKE #{diagnosis}) m
+						WHERE hms.medical_no = mNo
+						AND hms.species_no =sNo ) hm,
+						(SELECT DISTINCT hs.no
+						FROM hospitals hs,facilities_hospital fh1,facilities_hospital fh2,facilities_hospital fh3
+						WHERE hs.no=fh1.hospitals_no  AND hs.no=fh2.hospitals_no  AND hs.no=fh3.hospitals_no
+						<if test='parking == 1'>AND fh1.facilities_no=1</if>
+						<if test='bed == 1'>AND fh2.facilities_no=2</if>
+						<if test='hotel == 1'>AND fh3.facilities_no=3 </if>) hf
+					WHERE h.no = hm.hospitalNo
+					AND h.no =  hf.no
+					AND emergency IN(#{emergency},'t')
+					AND price BETWEEN #{minPrice} AND #{maxPrice}
+					AND speciesNo = #{species}
+					ORDER BY h.regdate DESC))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+
+
+	
+	<select id="selectHospitalMedicalListTotal" parameterType = "map" resultType="int">
+		SELECT count(*)
+		FROM hospitals h,
+			(SELECT no hmNo, medical_no medicalNo, species_no speciesNo, hospital_no hospitalNo,
+						price, min_weight minWeight, max_weight maxWeight, hms.regdate
+						,mName, speciesName
+				FROM hospital_medicals hms,
+					(SELECT no sNo, name speciesName, regdate
+					FROM species )s,
+					(SELECT no mNo, name mName, regdate
+					FROM medicals
+					WHERE name LIKE #{diagnosis}) m
+				WHERE hms.medical_no = mNo
+				AND hms.species_no =sNo ) hm,
+				(SELECT DISTINCT hs.no
+				FROM hospitals hs,facilities_hospital fh1,facilities_hospital fh2,facilities_hospital fh3
+				WHERE hs.no=fh1.hospitals_no  AND hs.no=fh2.hospitals_no  AND hs.no=fh3.hospitals_no
+				<if test='parking == 1'>AND fh1.facilities_no=1</if>
+				<if test='bed == 1'>AND fh2.facilities_no=2</if>
+				<if test='hotel == 1'>AND fh3.facilities_no=3 </if>) hf
+			WHERE h.no = hm.hospitalNo
+			AND h.no =  hf.no
+			AND emergency IN(#{emergency},'t')
+			AND price BETWEEN #{minPrice} AND #{maxPrice}
+			AND speciesNo = #{species}
+			ORDER BY h.regdate DESC
+	</select>
+	
+	
+</mapper>

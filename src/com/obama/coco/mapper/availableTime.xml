@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="availableTime">
+
+<!-- resultType:마이바티스가 넘겨주는 타입, parameterType:여기서 넘겨주는 타입 -->
+<!-- 넘겨 주는 방식은 두가지 : vo, map -->
+<!-- 
+#{id}, 라고 쓰면 getId를 마이바티스가 vo에서 호출하여 자동으로 가져간다 -->
+
+	<select id="selectAvailableTimeTotalList" parameterType = "int" resultType="AvailableTime">
+		SELECT no, hospital_no hospitalNo ,available_time availableTime ,regdate
+		FROM available_time
+		WHERE hospital_no = #{hospitalNo}
+		AND available_time LIKE '%2%'
+	</select>
+	
+	<select id="selectAvailableTimeFilterList" parameterType = "AvailableTime" resultType="AvailableTime">
+		SELECT no, hospital_no hospitalNo ,available_time availableTime ,regdate
+		FROM available_time
+		WHERE hospital_no = #{hospitalNo}
+		AND TO_DATE(TO_CHAR(#{availableTime}, 'YYYYMMDD')) = TO_DATE(TO_CHAR(available_time, 'YYYYMMDD'))
+	</select>
+
+	
+</mapper>

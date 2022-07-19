@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="species">
+
+<!-- resultType:마이바티스가 넘겨주는 타입, parameterType:여기서 넘겨주는 타입 -->
+<!-- 넘겨 주는 방식은 두가지 : vo, map -->
+<!-- 
+#{id}, 라고 쓰면 getId를 마이바티스가 vo에서 호출하여 자동으로 가져간다 -->
+
+
+	<select id="selectSpecies" resultType="Species">
+		SELECT no, name, picture, regdate
+		FROM species
+		ORDER BY no
+	</select>
+	
+	<select id="selectList" resultType="Species">
+		SELECT no, name, regdate, eng_name engName
+		FROM species
+		ORDER BY 1
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="Species">
+		SELECT no, name, regdate, eng_name engName
+		FROM species
+		WHERE no = #{no};
+	</select>
+
+	
+</mapper>
